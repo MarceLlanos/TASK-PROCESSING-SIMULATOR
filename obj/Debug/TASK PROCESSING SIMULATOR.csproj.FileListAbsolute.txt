@@ -1,0 +1,2 @@
+C:\Users\marcela.llanos\source\repos\TASK PROCESSING SIMULATOR\TASK PROCESSING SIMULATOR\obj\Debug\TASK PROCESSING SIMULATOR.csprojAssemblyReference.cache
+C:\Users\marcela.llanos\source\repos\TASK PROCESSING SIMULATOR\TASK PROCESSING SIMULATOR\obj\Debug\TASK PROCESSING SIMULATOR.csproj.CoreCompileInputs.cache
