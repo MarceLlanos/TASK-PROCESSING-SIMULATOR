@@ -18,9 +18,9 @@ namespace TASK_PROCESSING_SIMULATOR
             this.n = n;
             this.executor = executor;
         }
-        public int ActualNExecute()
+        public int ActualNExecute(int actual)
         {
-            return executor.Execute(n, this);
+            return actual;
         }
 
         public int GetIdTask()

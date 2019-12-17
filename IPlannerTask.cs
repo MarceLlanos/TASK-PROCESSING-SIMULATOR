@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IPlanner
+    interface IPlannerTask
     {
         ITask PlanTask(ITask[] tasks, INextExecutorVerifier verifier);
     }

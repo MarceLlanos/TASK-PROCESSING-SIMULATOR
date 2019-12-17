@@ -8,26 +8,20 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class Procesor : IProcessor
     {
-        IExecutor executor;
-        public Procesor(IExecutor executor)
-        {
-            this.executor = executor;
-        }
-
-        public ITask Process(ITask[] tasks)
         public ITask Process(ITask[] tasks)
         {
-            for (int i = 0; i < tasks.Length; )
+            foreach (var item in tasks)
             {
-                if (executor.Execute())
+                if (item.ActualNExecute()==0)
                 {
-                    
+                    return null;
                 }
-                else
+                if (true)
                 {
-                    i++;
+
                 }
             }
+            return null;
         }
     }
 }
