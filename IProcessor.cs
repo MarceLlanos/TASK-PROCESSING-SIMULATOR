@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface INextExecutorVerifier
+    interface IProcessor
     {
-        bool VerifyNextExecute(ITask firstTask, ITask secondTask);
+        ITask Process(ITask[] tasks);
     }
 }

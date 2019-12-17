@@ -8,6 +8,6 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     interface IFactory
     {
-        T Create();
+        void Create();
     }
 }

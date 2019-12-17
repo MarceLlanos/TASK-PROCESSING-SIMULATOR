@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface INextExecutorVerifier
+    interface IDataTask
     {
-        bool VerifyNextExecute(ITask firstTask, ITask secondTask);
+        int GetIdTask();
+        int GetPriorityTask();
+        int GetInstructionsTask();
     }
 }

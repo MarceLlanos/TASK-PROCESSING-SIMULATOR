@@ -5,5 +5,7 @@
         int GetIdTask();
         int GetPriorityTask();
         int GetInstructionsTask();
+        int GetN();
+        int ActualNExecute();
     }
 }

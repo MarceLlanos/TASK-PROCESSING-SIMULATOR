@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class RoundRobin : IFactory
+    class RoundRobin : INextExecutorVerifier
     {
-        public T Create()
-        {
-            throw new NotImplementedException();
-        }
-
         public bool VerifyNextExecute(ITask firstTask, ITask secondTask)
         {
-            throw new NotImplementedException();
+            bool result = false;
+
+            if (firstTask.GetIdTask() < secondTask.GetIdTask())
+            {
+                result = true;
+            }
+
+            return result;
         }
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class ShortestTaskFirstNextVerifier : IFactory
+    class ShortestTaskFirstNextVerifier : INextExecutorVerifier
     {
         public bool VerifyNextExecute(ITask firstTask, ITask secondTask)
         {

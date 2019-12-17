@@ -43,17 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IFactory.cs" />
+    <Compile Include="DataTask.cs" />
+    <Compile Include="Executor.cs" />
     <Compile Include="FIFONextVerifier.cs" />
+    <Compile Include="IDataTask.cs" />
+    <Compile Include="IExecutor.cs" />
+    <Compile Include="IFactory.cs" />
     <Compile Include="INextExecutorVerifier.cs" />
+    <Compile Include="INInstructions.cs" />
+    <Compile Include="IProcessor.cs" />
     <Compile Include="ITask.cs" />
-    <Compile Include="NextExecutorVerifier.cs" />
+    <Compile Include="NInstructions.cs" />
     <Compile Include="PriorityBasedNextVerifier.cs" />
+    <Compile Include="PriorityBasedRoundRobin.cs" />
+    <Compile Include="Procesor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoundRobin.cs" />
     <Compile Include="ShortestTaskFirstNextVerifier.cs" />
-    <Compile Include="T.cs" />
+    <Compile Include="Task.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class FIFONextVerifier : IFactory
+    class FIFONextVerifier : INextExecutorVerifier
     {
         public bool VerifyNextExecute(ITask firstTask, ITask secondTask)
         {
             bool result = false;
-
-            if (true)
+           
+            if (firstTask.GetIdTask() < secondTask.GetIdTask())
             {
-                if (firstTask.GetIdTask() < secondTask.GetIdTask())
-                {
-                    result = true;
-                }
+                result = true;
             }
 
             return result;

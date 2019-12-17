@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface INextExecutorVerifier
+    class PriorityBasedRoundRobin 
     {
-        bool VerifyNextExecute(ITask firstTask, ITask secondTask);
+      
     }
 }
