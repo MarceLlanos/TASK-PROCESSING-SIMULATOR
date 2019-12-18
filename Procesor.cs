@@ -8,20 +8,30 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class Procesor : IProcessor
     {
-        public ITask Process(ITask[] tasks)
-        {
-            foreach (var item in tasks)
-            {
-                if (item.ActualNExecute()==0)
-                {
-                    return null;
-                }
-                if (true)
-                {
+        IQueueTask queueTask;
 
-                }
+        public Procesor(IQueueTask queueTask)
+        {
+            this.queueTask = queueTask;
+        }
+
+        public ITask Process(IPlannerTask plannerTask, IExecutorTask executorTask)
+        {
+            ITask result = plannerTask.PlanTask(queueTask.GetTasks(), new FIFONextVerifier());
+
+            if (result.GetInstructionsTask() ==  result.GetExecutedInstructions())
+            {
+                queueTask.GetTasks().Remove(result);
+
+                return null;
             }
-            return null;
+
+            if (result != null)
+            {
+                executorTask.ExecuteTask(result, queueTask.GetDataQueue());
+            }
+            
+            return result;
         }
     }
 }

@@ -6,6 +6,8 @@
         int GetPriorityTask();
         int GetInstructionsTask();
         int GetN();
-        int ActualNExecute(int actual);
+        int GetExecutedInstructions();
+        void SetExecutedInstructions(int executedInstructions);
+        void Show();
     }
 }

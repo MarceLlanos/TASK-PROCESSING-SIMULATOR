@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IProcessor
+    class PriorityBaseProcessorFactory : IFactory<IProcessor>
     {
-        ITask Process(IPlannerTask plannerTask, IExecutorTask executorTask);
+        public IProcessor Create()
+        {
+            return null;
+        }
     }
 }

@@ -9,18 +9,18 @@ namespace TASK_PROCESSING_SIMULATOR
     class Task : ITask
     {
         IDataTask dataTask;
-        INInstructions n;
-        IExecutor executor;
-
-        public Task(IDataTask dataTask, INInstructions n, IExecutor executor)
+        IDataQueue dataQueue;
+        int executedInstruction;
+        public Task(IDataTask dataTask, IDataQueue dataQueue)
         {
             this.dataTask = dataTask;
-            this.n = n;
-            this.executor = executor;
+            this.dataQueue = dataQueue;
+            executedInstruction = 0;
         }
-        public int ActualNExecute(int actual)
+
+        public int GetExecutedInstructions()
         {
-            return actual;
+            return executedInstruction;
         }
 
         public int GetIdTask()
@@ -35,12 +35,22 @@ namespace TASK_PROCESSING_SIMULATOR
 
         public int GetN()
         {
-            return n.GetNInstructions();
+            return dataQueue.GetNValue();
         }
 
         public int GetPriorityTask()
         {
             return dataTask.GetPriorityTask();
+        }
+
+        public void SetExecutedInstructions(int executedInstructions)
+        {
+            this.executedInstruction = executedInstructions;
+        }
+
+        public void Show()
+        {
+
         }
     }
 }

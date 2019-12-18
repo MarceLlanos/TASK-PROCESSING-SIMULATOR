@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IFactory
+    interface IFactory<T>
     {
-        void Create();
+        T Create();
     }
 }

@@ -8,6 +8,6 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     interface IPlannerTask
     {
-        ITask PlanTask(ITask[] tasks, INextExecutorVerifier verifier);
+        ITask PlanTask(List<ITask> tasks, INextExecutorVerifier verifier);
     }
 } 

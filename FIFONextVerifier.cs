@@ -11,7 +11,7 @@ namespace TASK_PROCESSING_SIMULATOR
         public bool VerifyNextExecute(ITask firstTask, ITask secondTask)
         {
             bool result = false;
-           
+
             if (firstTask.GetIdTask() < secondTask.GetIdTask())
             {
                 result = true;
