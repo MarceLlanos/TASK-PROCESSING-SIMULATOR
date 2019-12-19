@@ -8,6 +8,6 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     interface IExecutorTask
     {
-        void ExecuteTask(ITask task);
+        ITask ExecuteTask(ITask task);
     }
 }

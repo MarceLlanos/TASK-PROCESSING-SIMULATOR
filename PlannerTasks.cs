@@ -6,31 +6,34 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class PlannerTask : IPlannerTask
+    class PlannerTasks : IPlannerTasks
     {
         INextExecutorVerifier verifier;
 
-        public PlannerTask(INextExecutorVerifier verifier)
+        public PlannerTasks(INextExecutorVerifier verifier)
         {
             this.verifier = verifier;
         }
 
-        public ITask PlanTask(List<ITask> tasks)
+        public ITask PlanTasks(IQueueTask queueTask)
         {
+            var tasks = queueTask.GetTasks();
+            ITask result = null;
+
             if (tasks == null || tasks.Count == 0)
             {
-                return null;
+                return result;
             }
 
             for (int i = 0; i < tasks.Count; i++)
             {
                 if (verifier.VerifyNextExecute(tasks[i], tasks[i++]))
                 {
-                    return tasks[i];
+                    return result = tasks[i];
                 }
             }
 
-            return null;
+            return result;
         }
     }
 }

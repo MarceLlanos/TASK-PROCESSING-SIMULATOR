@@ -6,24 +6,11 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class QueueFactory : IQueueFactory
+    class QueueFactory : IFactory<IQueueTask>
     {
-        public IProcessor ProcessorTask(string processor)
+        public IQueueTask Create()
         {
-            switch (processor)
-            {
-                case "FIFO":
-                    return null;
-
-                case "Priority Based":
-                    return new PriorityBaseProcessorFactory().Create();
-
-                case "Shortest Task First":
-                    return new ShortestTaskProcessorFactory().Create();
-
-                default:
-                    return null;
-            }
+            return new ManagerQueue(new QueueTask(new DataQueue(0,0))).ManageQueue();
         }
     }
 }

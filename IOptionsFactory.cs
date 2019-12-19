@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IProcessor
+    interface IOptionsFactory
     {
-        ITask Process(IExecutorTask executorTask);
+        IPlannerTasks PlanneTask(string planneSort);
     }
 }

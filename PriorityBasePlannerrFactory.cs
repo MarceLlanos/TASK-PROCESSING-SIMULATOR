@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class Adder : IAdder
+    class PriorityBasePlannerrFactory : IFactory<IPlannerTasks>
     {
-        public int Calculate(int valueExecuteQueue, int valueExecutedTask)
+        public IPlannerTasks Create()
         {
-            return valueExecuteQueue - valueExecutedTask;
+            return new PlannerTasks(new PriorityBasedNextVerifier());
         }
     }
 }

@@ -9,5 +9,6 @@
         int GetExecutedInstructions();
         void SetExecutedInstructions(int executedInstructions);
         void Show();
+        IDataQueue GetDataQueueTask();
     }
 }

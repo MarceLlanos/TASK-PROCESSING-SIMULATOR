@@ -8,15 +8,13 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class QueueTask : IQueueTask
     {
-        IProcessor processor;
         List<ITask> tasks;
         IDataQueue dataQueue;
 
-        public QueueTask(List<ITask> tasks, IDataQueue dataQueue, IProcessor processor )
+        public QueueTask( IDataQueue dataQueue)
         {
-            this.processor = processor;
-            this.tasks = tasks;
             this.dataQueue = dataQueue;
+            tasks = new List<ITask>();
         }
 
         public void AddTask(ITask task)
@@ -24,9 +22,9 @@ namespace TASK_PROCESSING_SIMULATOR
             tasks.Add(task);
         }
 
-        public void DeleteTask()
+        public void DeleteTask(ITask task)
         {
-            throw new NotImplementedException();
+            tasks.Remove(task);
         }
 
         public IDataQueue GetDataQueue()
@@ -41,7 +39,16 @@ namespace TASK_PROCESSING_SIMULATOR
 
         public void ShowQueue()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine("N Value: {0}", dataQueue.GetNValue());
+            Console.WriteLine("Execute Value: {0}", dataQueue.GetExecuteValue());
+
+            foreach (var item in tasks)
+            {
+                item.Show();
+            }
+
+            Console.WriteLine("-----------------------------------------");
         }
     }
 }

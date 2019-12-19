@@ -10,6 +10,8 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         static void Main(string[] args)
         {
+            bool notEsc = true;
+
             Console.WriteLine("Choose the Algorithm:");
             Console.WriteLine("1 = FIFO");
             Console.WriteLine("2 = Priority Based");
@@ -17,39 +19,57 @@ namespace TASK_PROCESSING_SIMULATOR
             Console.WriteLine("4 = Round Robin");
             Console.WriteLine("5 = Round Robin - Priority Based");
             string processor = Console.ReadLine();
-            Console.WriteLine(processor);
 
             Console.WriteLine("What is the value for N:");
             string valueN = Console.ReadLine();
             Console.WriteLine(valueN);
 
-            Console.WriteLine("ADD");
-            Console.WriteLine("EXECUTE");
-            Console.WriteLine("SHOW");
-            string actionOption = Console.ReadLine();
+            var dataQueue = new DataQueue(int.Parse(valueN), 0);
 
-            if (actionOption == "ADD")
+            while (notEsc)
             {
-                Console.WriteLine("Add task's priority:");
-                string priorityTask = Console.ReadLine();
-                Console.WriteLine("Add task's instructions");
-                string instructionsTask = Console.ReadLine();
+                Console.WriteLine("ADD");
+                Console.WriteLine("EXECUTE");
+                Console.WriteLine("SHOW");
+                Console.WriteLine("ESC");
 
-                Console.WriteLine("ADD {0} {1}", priorityTask, instructionsTask);
+                string actionOption = Console.ReadLine();
+
+                if (actionOption == "ADD")
+                {
+                    Console.WriteLine("Add task's priority:");
+                    string priorityTask = Console.ReadLine();
+                    Console.WriteLine("Add task's instructions");
+                    string instructionsTask = Console.ReadLine();
+
+                    Console.WriteLine("ADD {0} {1}", priorityTask, instructionsTask);
+                    notEsc = true;
+
+                }
+
+                if (actionOption == "EXECUTE")
+                {
+                    Console.WriteLine("number of executions:");
+                    string execution = Console.ReadLine();
+
+                    Console.WriteLine("EXECUTE {0}", execution);
+
+                    dataQueue.SetExecuteValue(int.Parse(execution));
+                    notEsc = true;
+
+                }
+
+                if (actionOption == "SHOW")
+                {
+                    notEsc = true;
+                }
+
+                if (actionOption == "ESC")
+                {
+                    notEsc = false;
+                }
             }
-
-            if (actionOption == "EXECUTE")
-            {
-                Console.WriteLine("number of executions:");
-                string execution = Console.ReadLine();
-
-                Console.WriteLine("EXECUTE {0}", execution);                
-            }
-
-            if (actionOption == "SHOW")
-            {
-                
-            }
+            
 
             Console.ReadKey();
 

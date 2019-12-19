@@ -19,6 +19,11 @@ namespace TASK_PROCESSING_SIMULATOR
             
         }
 
+        public IDataQueue GetDataQueueTask()
+        {
+            return dataQueue;
+        }
+
         public int GetExecutedInstructions()
         {
             return executedInstruction;
@@ -51,7 +56,11 @@ namespace TASK_PROCESSING_SIMULATOR
 
         public void Show()
         {
-
+            Console.WriteLine("id {0}", dataTask.GetIdTask());
+            Console.WriteLine("Priority {0}", GetPriorityTask());
+            Console.WriteLine("Instructions {0}", GetInstructionsTask());
+            Console.WriteLine("Executed Instructions {0}", GetExecutedInstructions());
+            Console.WriteLine("--------------------------");
         }
     }
 }

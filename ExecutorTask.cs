@@ -8,10 +8,22 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class ExecutorTask : IExecutorTask
     {
-        
-        public void ExecuteTask(ITask task)
+        public ITask ExecuteTask(ITask task)
         {
-            
+            var valueExecuted = task.GetInstructionsTask() - task.GetExecutedInstructions();
+            var actualValueExecuted = valueExecuted - task.GetDataQueueTask().GetExecuteValue();
+
+            if (actualValueExecuted > 0)
+            {
+                task.SetExecutedInstructions(actualValueExecuted);
+                task.GetDataQueueTask().SetExecuteValue(0);
+            }
+            else
+            {
+                task.GetDataQueueTask().SetExecuteValue(actualValueExecuted*-1);
+            }
+
+            return task;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IDataQueue
+    public interface IDataQueue
     {
         int GetNValue();
         int GetExecuteValue();
