@@ -8,8 +8,20 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class PlannerTask : IPlannerTask
     {
-        public ITask PlanTask(List<ITask> tasks, INextExecutorVerifier verifier)
+        INextExecutorVerifier verifier;
+
+        public PlannerTask(INextExecutorVerifier verifier)
         {
+            this.verifier = verifier;
+        }
+
+        public ITask PlanTask(List<ITask> tasks)
+        {
+            if (tasks == null || tasks.Count == 0)
+            {
+                return null;
+            }
+
             for (int i = 0; i < tasks.Count; i++)
             {
                 if (verifier.VerifyNextExecute(tasks[i], tasks[i++]))

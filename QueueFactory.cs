@@ -13,7 +13,7 @@ namespace TASK_PROCESSING_SIMULATOR
             switch (processor)
             {
                 case "FIFO":
-                    return new FIFOProcessorFactory().Create();
+                    return null;
 
                 case "Priority Based":
                     return new PriorityBaseProcessorFactory().Create();
@@ -22,7 +22,7 @@ namespace TASK_PROCESSING_SIMULATOR
                     return new ShortestTaskProcessorFactory().Create();
 
                 default:
-                    return new FIFOProcessorFactory().Create();
+                    return null;
             }
         }
     }

@@ -11,11 +11,12 @@ namespace TASK_PROCESSING_SIMULATOR
         IDataTask dataTask;
         IDataQueue dataQueue;
         int executedInstruction;
+
         public Task(IDataTask dataTask, IDataQueue dataQueue)
         {
             this.dataTask = dataTask;
             this.dataQueue = dataQueue;
-            executedInstruction = 0;
+            
         }
 
         public int GetExecutedInstructions()

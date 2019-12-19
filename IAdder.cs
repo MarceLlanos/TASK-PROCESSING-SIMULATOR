@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IProcessor
+    interface IAdder
     {
-        ITask Process(IExecutorTask executorTask);
+        int Calculate(int valueExecuteQueue, int valueExecutedTask);
     }
 }

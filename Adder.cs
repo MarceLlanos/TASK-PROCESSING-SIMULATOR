@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class ExecutorTask : IExecutorTask
+    class Adder : IAdder
     {
-        
-        public void ExecuteTask(ITask task)
+        public int Calculate(int valueExecuteQueue, int valueExecutedTask)
         {
-            
+            return valueExecuteQueue - valueExecutedTask;
         }
     }
 }
