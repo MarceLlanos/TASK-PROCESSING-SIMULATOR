@@ -8,20 +8,13 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class DataTask: IDataTask
     {
-        IGenerateId idTask;
         int priorityTask;
         int instructionsTask;
 
-        public DataTask( IGenerateId idTask, int priorityTask, int instructionsTask)
+        public DataTask( int priorityTask, int instructionsTask)
         {
-            this.idTask = idTask;
             this.priorityTask = priorityTask;
             this.instructionsTask = instructionsTask; 
-        }
-
-        public int GetIdTask()
-        {
-            return idTask.GenerateId();
         }
 
         public int GetInstructionsTask()

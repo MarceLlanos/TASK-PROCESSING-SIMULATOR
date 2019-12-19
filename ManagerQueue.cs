@@ -21,7 +21,7 @@ namespace TASK_PROCESSING_SIMULATOR
 
             if (task != null)
             {
-                var newTask = new ProcessorTask().ProcessTask(task);
+                var newTask = new ExecutorTask().ExecuteTask(task);
 
                 foreach (var item in queueTask.GetTasks())
                 {

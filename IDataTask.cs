@@ -8,7 +8,6 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     interface IDataTask
     {
-        int GetIdTask();
         int GetPriorityTask();
         int GetInstructionsTask();
     }

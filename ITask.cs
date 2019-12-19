@@ -2,7 +2,7 @@
 {
     public interface ITask
     {
-        int GetIdTask();
+        IGenerateId GetIdTask();
         int GetPriorityTask();
         int GetInstructionsTask();
         int GetN();

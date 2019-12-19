@@ -8,12 +8,6 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class OptionsFactory : IOptionsFactory
     {
-        IQueueTask queueTask;
-
-        public OptionsFactory(IQueueTask queueTask)
-        {
-            this.queueTask = queueTask;
-        }
         public IPlannerTasks PlanneTask(string planneSort)
         {
             switch (planneSort)

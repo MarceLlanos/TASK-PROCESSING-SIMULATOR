@@ -13,14 +13,17 @@ namespace TASK_PROCESSING_SIMULATOR
             var valueExecuted = task.GetInstructionsTask() - task.GetExecutedInstructions();
             var actualValueExecuted = valueExecuted - task.GetDataQueueTask().GetExecuteValue();
 
-            if (actualValueExecuted > 0)
+            if (valueExecuted > 0)
             {
-                task.SetExecutedInstructions(actualValueExecuted);
-                task.GetDataQueueTask().SetExecuteValue(0);
-            }
-            else
-            {
-                task.GetDataQueueTask().SetExecuteValue(actualValueExecuted*-1);
+                if (actualValueExecuted > 0)
+                {
+                    task.SetExecutedInstructions(actualValueExecuted);
+                    task.GetDataQueueTask().SetExecuteValue(0);
+                }
+                else
+                {
+                    task.GetDataQueueTask().SetExecuteValue(actualValueExecuted*-1);
+                }
             }
 
             return task;

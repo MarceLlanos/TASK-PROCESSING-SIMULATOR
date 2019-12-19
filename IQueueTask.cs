@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IQueueTask
+    public interface IQueueTask
     {
         void AddTask(ITask task);
         void DeleteTask(ITask task);

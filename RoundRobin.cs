@@ -12,7 +12,7 @@ namespace TASK_PROCESSING_SIMULATOR
         {
             bool result = false;
 
-            if (firstTask.GetIdTask() < secondTask.GetIdTask())
+            if (firstTask.GetIdTask().GenerateId() < secondTask.GetIdTask().GenerateId())
             {
                 result = true;
             }

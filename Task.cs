@@ -11,9 +11,10 @@ namespace TASK_PROCESSING_SIMULATOR
         IDataTask dataTask;
         IDataQueue dataQueue;
         int executedInstruction;
-
-        public Task(IDataTask dataTask, IDataQueue dataQueue)
+        IGenerateId id;
+        public Task(IGenerateId id, IDataTask dataTask, IDataQueue dataQueue)
         {
+            this.id = id;
             this.dataTask = dataTask;
             this.dataQueue = dataQueue;
             
@@ -29,9 +30,9 @@ namespace TASK_PROCESSING_SIMULATOR
             return executedInstruction;
         }
 
-        public int GetIdTask()
+        public IGenerateId GetIdTask()
         {
-            return dataTask.GetIdTask();
+            return id;
         }
 
         public int GetInstructionsTask()
@@ -56,7 +57,7 @@ namespace TASK_PROCESSING_SIMULATOR
 
         public void Show()
         {
-            Console.WriteLine("id {0}", dataTask.GetIdTask());
+            Console.WriteLine("id {0}", GetIdTask());
             Console.WriteLine("Priority {0}", GetPriorityTask());
             Console.WriteLine("Instructions {0}", GetInstructionsTask());
             Console.WriteLine("Executed Instructions {0}", GetExecutedInstructions());

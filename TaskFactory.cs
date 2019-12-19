@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class TaskFactory : IFactory<ITask>
+    class TaskFactory : ITaskFactory
     {
-        IQueueTask queueTask;
 
-        public TaskFactory(IQueueTask queueTask)
+        public TaskFactory()
         {
-            this.queueTask = queueTask;
         }
-        public ITask Create()
+        public ITask Create(IDataTask dataTask, IDataQueue dataQueue)
         {
-            return new Task(new DataTask(new GeneratorId(0), 0, 0), queueTask.GetDataQueue());
+            return new Task(new GeneratorId(0), dataTask, dataQueue);
         }
     }
 }
