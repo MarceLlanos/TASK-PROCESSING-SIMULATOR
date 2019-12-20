@@ -2,7 +2,7 @@
 {
     public interface IQueueTaskFactory
     {
-        IQueueTask CreateQueueTaskFatory(string plannerSort, IDataQueue dataQueue);
+        IQueueTask CreateQueueTaskFatory(int nValue);
 
     }
 }

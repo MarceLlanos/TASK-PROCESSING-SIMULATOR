@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class FIFONextVerifier : INextExecutorVerifier
+    class PriorityBasedProcessVerifier : IProcessorTasksVerifier
     {
-        public bool VerifyNextExecute(ITask firstTask, ITask secondTask)
+        public bool VerifyProcessorTasks(ITask firstTask, ITask secondTask)
         {
             bool result = false;
 
-            if (firstTask.GetIdTask().GenerateId() < secondTask.GetIdTask().GenerateId())
+            if (firstTask.GetDataTask().GetPriorityTask() < secondTask.GetDataTask().GetPriorityTask())
             {
                 result = true;
             }

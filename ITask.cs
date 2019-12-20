@@ -2,11 +2,10 @@
 {
     public interface ITask
     {
-        IGenerateId GetIdTask();
-        int GetPriorityTask();
-        int GetInstructionsTask();
-        int GetN();
+        IDataTask GetDataTask();
         int GetExecutedInstructions();
+        int GetId();
+        void SetId(int id);
         void SetExecutedInstructions(int executedInstructions);
         void Show();
         IDataQueue GetDataQueueTask();

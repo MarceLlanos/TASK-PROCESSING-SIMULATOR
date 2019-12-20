@@ -9,27 +9,28 @@ namespace TASK_PROCESSING_SIMULATOR
     class QueueTask : IQueueTask
     {
         List<ITask> tasks;
-        IDataQueue dataQueue;
-
-        public QueueTask( IDataQueue dataQueue)
+        int nValue;
+        public QueueTask(int nValue)
         {
-            this.dataQueue = dataQueue;
+            this.nValue = nValue;
             tasks = new List<ITask>();
         }
 
-        public void AddTask(ITask task)
+        public bool AddTask(ITask task)
         {
-            tasks.Add(task);
+            if (task.GetDataTask().GetPriorityTask() > 0 || task.GetDataTask().GetInstructionsTask() > 0)
+            {
+                tasks.Add(task);
+                return true;
+            }
+
+            return false;
         }
 
         public void DeleteTask(ITask task)
         {
-            tasks.Remove(task);
-        }
 
-        public IDataQueue GetDataQueue()
-        {
-            return dataQueue;
+            tasks.Remove(task);
         }
 
         public List<ITask> GetTasks()
@@ -40,8 +41,7 @@ namespace TASK_PROCESSING_SIMULATOR
         public void ShowQueue()
         {
             Console.WriteLine("-----------------------------------------");
-            Console.WriteLine("N Value: {0}", dataQueue.GetNValue());
-            Console.WriteLine("Execute Value: {0}", dataQueue.GetExecuteValue());
+            Console.WriteLine("N Value: {0}", nValue);
 
             foreach (var item in tasks)
             {

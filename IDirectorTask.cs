@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IExecutorTask
+    public interface IDirectorTask
     {
-        ITask ExecuteTask(ITask task);
+        IQueueTask DirectTasks(int execute);
     }
 }

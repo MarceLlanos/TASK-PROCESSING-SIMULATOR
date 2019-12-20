@@ -12,22 +12,26 @@ namespace TASK_PROCESSING_SIMULATOR
         {
             bool notEsc = true;
 
+            IQueueTaskFactory queueTaskFactory = new QueueTaskFactory();
+            IDirectorTasksFactory directorTaskFactory = new DirectorTasksFactory();
+            ITaskFactory task = new TaskFactory(new GeneratorId());
+            
             Console.WriteLine("Choose the Algorithm:");
             Console.WriteLine("1 = FIFO");
             Console.WriteLine("2 = Priority Based");
             Console.WriteLine("3 = Shortest Task First");
             Console.WriteLine("4 = Round Robin");
             Console.WriteLine("5 = Round Robin - Priority Based");
-            string processor = Console.ReadLine();
+            string planner = Console.ReadLine();
 
             Console.WriteLine("What is the value for N:");
             string valueN = Console.ReadLine();
-            Console.WriteLine(valueN);
-            string execution = string.Empty;
 
-            var dataQueue = new DataQueue(int.Parse(valueN), int.Parse(execution));
+            IDataQueue dataQueue = new DataQueue(int.Parse(valueN), 0);
 
-            var queueTask = new QueueTaskFactory().CreateQueueTaskFatory(processor, dataQueue);
+            var queueTask = queueTaskFactory.CreateQueueTaskFatory(int.Parse(valueN));
+
+            var directorTask  = directorTaskFactory.CreateDirectorTasks(planner, queueTask);
 
             while (notEsc)
             {
@@ -46,29 +50,44 @@ namespace TASK_PROCESSING_SIMULATOR
                     string instructionsTask = Console.ReadLine();
 
                     Console.WriteLine("ADD {0} {1}", priorityTask, instructionsTask);
-                    var dataTask = new DataTask(int.Parse(priorityTask), int.Parse(instructionsTask));
-                    var task = new TaskFactory().Create(dataTask, dataQueue);
+
+                    var newTask = task.CreateTask(int.Parse(priorityTask), int.Parse(instructionsTask), dataQueue);
+
+                    if (queueTask.AddTask(newTask))
+                    {
+                        
+                        Console.WriteLine("ADDED!");
+                        Console.WriteLine("");
+                    }
+                    else
+                    {
+                        Console.WriteLine("FAIL TO ADDED");
+                        Console.WriteLine("");
+
+                    }
 
                     notEsc = true;
-
                 }
 
                 if (actionOption == "EXECUTE")
                 {
                     Console.WriteLine("number of executions:");
-                    execution = Console.ReadLine();
+                    string executeValue = Console.ReadLine();
 
-                    Console.WriteLine("EXECUTE {0}", execution);
+                    Console.WriteLine("EXECUTE {0}", executeValue);
+                    Console.WriteLine("");
+                    dataQueue.SetExecuteValue(int.Parse(executeValue));
+                    directorTask.DirectTasks(int.Parse(executeValue));
 
-                    dataQueue.SetExecuteValue(int.Parse(execution));
                     notEsc = true;
 
                 }
 
                 if (actionOption == "SHOW")
                 {
-                    notEsc = true;
                     queueTask.ShowQueue();
+                    Console.WriteLine("");
+                    notEsc = true;
                 }
 
                 if (actionOption == "ESC")

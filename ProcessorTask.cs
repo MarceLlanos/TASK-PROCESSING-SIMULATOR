@@ -8,21 +8,33 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class ProcessorTask : IProcessorTask
     {
-        public ITask ProcessTask(ITask task)
+        public ITask ProcessTask(ITask task, int executeValue)
         {
-            if (task.GetInstructionsTask() > task.GetExecutedInstructions())
+            if(task.GetDataTask().GetInstructionsTask() - task.GetExecutedInstructions()> 0)
             {
-                var taskResult = new ExecutorTask().ExecuteTask(task);
+                var instructionsExecuted = task.GetDataTask().GetInstructionsTask() - task.GetExecutedInstructions();
+                var nowInstructionsExecuted = instructionsExecuted - executeValue;
 
-                if (taskResult.GetInstructionsTask() == task.GetExecutedInstructions())
+                if (nowInstructionsExecuted > 0)
                 {
-                    
+                    task.SetExecutedInstructions(executeValue + task.GetExecutedInstructions());
+                    task.GetDataQueueTask().SetExecuteValue(0);
                 }
 
-                return taskResult;
+                if(nowInstructionsExecuted < 0)
+                {
+                    task.SetId(0);
+                    task.GetDataQueueTask().SetExecuteValue(nowInstructionsExecuted *-1);
+                }
+
+                if (nowInstructionsExecuted == 0)
+                {
+                    task.SetId(0);
+                    task.GetDataQueueTask().SetExecuteValue(0);
+                }
             }
 
-            return null;
+            return task;
         }
     }
 }

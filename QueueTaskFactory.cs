@@ -8,15 +8,9 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class QueueTaskFactory : IQueueTaskFactory
     {
-        public QueueTaskFactory()
+        public IQueueTask CreateQueueTaskFatory(int nValue)
         {
-        }
-
-        public IQueueTask CreateQueueTaskFatory(string plannerSort, IDataQueue dataQueue)
-        {
-            var optionsFactory = new OptionsFactory().PlanneTask(plannerSort);
-
-            return new ManagerQueue(new QueueTask(dataQueue)).ManageQueue(optionsFactory);
+            return new QueueTask(nValue);
         }
     }
 }

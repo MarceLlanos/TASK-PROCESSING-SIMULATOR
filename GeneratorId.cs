@@ -8,15 +8,15 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class GeneratorId : IGenerateId
     {
-        int id;
+        int idTask;
 
-        public GeneratorId(int id)
+        public GeneratorId()
         {
-            this.id = id;
+            idTask = 0;
         }
         public int GenerateId()
         {
-            return id += 1;
-        }
+            return idTask +=1;
+        } 
     }
 }

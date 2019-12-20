@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface INextExecutorVerifier
+    public interface IDirectorTasksFactory
     {
-        bool VerifyNextExecute(ITask firstTask, ITask secondTask);
+        IDirectorTask CreateDirectorTasks(string algorithm, IQueueTask queueTask);
     }
 }

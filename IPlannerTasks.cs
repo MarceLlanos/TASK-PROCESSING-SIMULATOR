@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IPlannerTasks
+    public interface IPlannerTasks
     {
-        ITask PlanTasks(IQueueTask queueTask);
+        ITask PlanTasks(List<ITask> tasks);
     }
 } 

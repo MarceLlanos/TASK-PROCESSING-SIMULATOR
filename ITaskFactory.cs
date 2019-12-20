@@ -2,7 +2,7 @@
 {
     internal interface ITaskFactory
     {
-        ITask Create(IDataTask dataTask, IDataQueue dataQueue);
+        ITask CreateTask(int priority, int instructions, IDataQueue dataQueue);
 
     }
 }

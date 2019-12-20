@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class RoundRobin : IProcessorTasksVerifier
+    class ShortestTaskFirstProcessVerifier : IProcessorTasksVerifier
     {
         public bool VerifyProcessorTasks(ITask firstTask, ITask secondTask)
         {
             bool result = false;
 
-            if (firstTask.GetId() < secondTask.GetId())
+            if (firstTask.GetDataTask().GetInstructionsTask() < secondTask.GetDataTask().GetInstructionsTask())
             {
-                result = true;
+                return result = true;
             }
 
             return result;
         }
-
     }
 }

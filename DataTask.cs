@@ -19,12 +19,12 @@ namespace TASK_PROCESSING_SIMULATOR
 
         public int GetInstructionsTask()
         {
-            return priorityTask;
+            return instructionsTask;
         }
 
         public int GetPriorityTask()
         {
-            return instructionsTask;
+            return priorityTask;
         }
     }
 }

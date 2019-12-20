@@ -8,10 +8,9 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     public interface IQueueTask
     {
-        void AddTask(ITask task);
+        bool AddTask(ITask task);
         void DeleteTask(ITask task);
         void ShowQueue();
         List<ITask> GetTasks();
-        IDataQueue GetDataQueue();
     }
 }

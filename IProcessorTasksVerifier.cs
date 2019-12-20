@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IManagerQueue
+    interface IProcessorTasksVerifier
     {
-        IQueueTask ManageQueue(IPlannerTasks plannerTask);
+        bool VerifyProcessorTasks(ITask firstTask, ITask secondTask);
     }
 }
