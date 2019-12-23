@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="DataQueue.cs" />
     <Compile Include="DataTask.cs" />
+    <Compile Include="ICarryTaskToQueue.cs" />
+    <Compile Include="IQueueGarbageCollector.cs" />
     <Compile Include="ProcessorTask.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="FIFOProcesstVerifier.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PlannerFactory.cs" />
+    <Compile Include="QueueGarbageCollector.cs" />
     <Compile Include="QueueTaskFactory.cs" />
     <Compile Include="QueueTask.cs" />
     <Compile Include="RoundRobin.cs" />

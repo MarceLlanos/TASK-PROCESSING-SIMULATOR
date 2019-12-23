@@ -11,5 +11,7 @@ namespace TASK_PROCESSING_SIMULATOR
         int GetNValue();
         int GetExecuteValue();
         void SetExecuteValue(int executeValue);
+        int executeValueResult(int resultInstruction, int execute);
+
     }
 }

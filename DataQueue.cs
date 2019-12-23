@@ -31,5 +31,10 @@ namespace TASK_PROCESSING_SIMULATOR
         {
             this.executeValue = executeValue;
         }
+
+        public int executeValueResult(int resultInstruction, int execute)
+        {
+            return resultInstruction - execute;
+        }
     }
 }

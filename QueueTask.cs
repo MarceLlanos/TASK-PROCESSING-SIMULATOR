@@ -27,10 +27,21 @@ namespace TASK_PROCESSING_SIMULATOR
             return false;
         }
 
-        public void DeleteTask(ITask task)
+        public ITask DequeueTask(ITask task)
         {
+            ITask resultTask = null;
 
-            tasks.Remove(task);
+            for (int i = 0; i < tasks.Count; i++)
+            {
+                if (tasks[i] == task)
+                {
+                    resultTask = tasks[i];
+                    tasks.Insert(0, resultTask);
+                    tasks.RemoveAt(i+1);
+                }
+            }
+
+            return resultTask;
         }
 
         public List<ITask> GetTasks()

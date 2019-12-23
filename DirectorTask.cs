@@ -16,31 +16,21 @@ namespace TASK_PROCESSING_SIMULATOR
             this.queueTask = queueTask;
         }
 
-        public IQueueTask DirectTasks(int execute)
+        public IQueueTask DirectTasks(IDataQueue dataQueue)
         {
-            IQueueTask queueTaskResult = queueTask;
-            var processorTask = new ProcessorTask();
-            var task = plannerTask.PlanTasks(queueTask.GetTasks());
-
-            while (task != null)
+            for (int i = 0; i < queueTask.GetTasks().Count; i++)
             {
-                foreach (var item in queueTaskResult.GetTasks())
-                {
-                    if (item.GetId() == 0)
-                    {
-                        queueTask.DeleteTask(item);
-                    }
+                var task = plannerTask.PlanTasks(queueTask.GetTasks());
 
-                    if (item == task)
-                    {
-                        var taskResult = processorTask.ProcessTask(task, execute);
-                        queueTaskResult.DeleteTask(item);
-                        queueTaskResult.AddTask(taskResult);
-                    }
+                if (queueTask.GetTasks()[i] == task)
+                {
+                    var taskProcessed = new ProcessorTask().ProcessTask(task, dataQueue.GetExecuteValue());
+                    queueTask.DequeueTask(taskProcessed);
                 }
+
             }
 
-            return queueTaskResult;
+            return queueTask;
         }
     }
 }

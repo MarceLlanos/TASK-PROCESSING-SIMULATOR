@@ -28,7 +28,7 @@ namespace TASK_PROCESSING_SIMULATOR
             {
                 if (verifier.VerifyProcessorTasks(item, result))
                 {
-                    return result = item;
+                    result = item;
                 }
             }
              

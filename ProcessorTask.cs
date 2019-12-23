@@ -10,28 +10,19 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public ITask ProcessTask(ITask task, int executeValue)
         {
-            if(task.GetDataTask().GetInstructionsTask() - task.GetExecutedInstructions()> 0)
+            var resultInstructions = task.GetDataTask().GetInstructionsTask() - task.GetExecutedInstructions();
+            var executedInstructions = task.GetExecutedInstructions() + executeValue;
+
+            if ( executedInstructions < task.GetDataTask().GetInstructionsTask())
             {
-                var instructionsExecuted = task.GetDataTask().GetInstructionsTask() - task.GetExecutedInstructions();
-                var nowInstructionsExecuted = instructionsExecuted - executeValue;
+                task.SetExecutedInstructions(executedInstructions);
+                task.GetDataQueueTask().SetExecuteValue(0);
+            }
 
-                if (nowInstructionsExecuted > 0)
-                {
-                    task.SetExecutedInstructions(executeValue + task.GetExecutedInstructions());
-                    task.GetDataQueueTask().SetExecuteValue(0);
-                }
-
-                if(nowInstructionsExecuted < 0)
-                {
-                    task.SetId(0);
-                    task.GetDataQueueTask().SetExecuteValue(nowInstructionsExecuted *-1);
-                }
-
-                if (nowInstructionsExecuted == 0)
-                {
-                    task.SetId(0);
-                    task.GetDataQueueTask().SetExecuteValue(0);
-                }
+            if ( executedInstructions > task.GetDataTask().GetInstructionsTask())
+            {
+                task.GetDataQueueTask().SetExecuteValue(executedInstructions - task.GetDataTask().GetInstructionsTask());
+                task.SetExecutedInstructions(task.GetDataTask().GetInstructionsTask());
             }
 
             return task;

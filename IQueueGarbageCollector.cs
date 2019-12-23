@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    public interface IQueueTask
+    interface IQueueGarbageCollector
     {
-        bool AddTask(ITask task);
-        ITask DequeueTask(ITask task);
-        void ShowQueue();
-        List<ITask> GetTasks();
+        IQueueTask ColectTask(IQueueTask queue);
     }
 }
