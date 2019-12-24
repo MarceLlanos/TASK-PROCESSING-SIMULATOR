@@ -12,5 +12,7 @@ namespace TASK_PROCESSING_SIMULATOR
         ITask DequeueTask(ITask task);
         void ShowQueue();
         List<ITask> GetTasks();
+        void DeleteTask();
+
     }
 }

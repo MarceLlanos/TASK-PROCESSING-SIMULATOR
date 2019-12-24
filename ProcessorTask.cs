@@ -6,23 +6,28 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class ProcessorTask : IProcessorTask
+    class ProcessorTask : IProcessorTask<int>
     {
         public ITask ProcessTask(ITask task, int executeValue)
         {
-            var resultInstructions = task.GetDataTask().GetInstructionsTask() - task.GetExecutedInstructions();
-            var executedInstructions = task.GetExecutedInstructions() + executeValue;
+            var executedInstructions = task.GetPendingInstructions() + executeValue;
+            var resultExecutions = executedInstructions - task.GetDataTask().GetInstructionsTask();
 
-            if ( executedInstructions < task.GetDataTask().GetInstructionsTask())
+            if (task.GetDataTask().GetInstructionsTask() < executedInstructions )
             {
-                task.SetExecutedInstructions(executedInstructions);
+                task.GetDataQueueTask().SetExecuteValue(resultExecutions);
+                task.SetExecutedInstructions(task.GetDataTask().GetInstructionsTask());
+            }
+
+            if (task.GetDataTask().GetInstructionsTask() == executedInstructions)
+            {
+                task.SetExecutedInstructions(task.GetDataTask().GetInstructionsTask());
                 task.GetDataQueueTask().SetExecuteValue(0);
             }
 
-            if ( executedInstructions > task.GetDataTask().GetInstructionsTask())
+            if (task.GetDataTask().GetInstructionsTask() > executedInstructions)
             {
-                task.GetDataQueueTask().SetExecuteValue(executedInstructions - task.GetDataTask().GetInstructionsTask());
-                task.SetExecutedInstructions(task.GetDataTask().GetInstructionsTask());
+                task.GetDataQueueTask().SetExecuteValue(executedInstructions);
             }
 
             return task;

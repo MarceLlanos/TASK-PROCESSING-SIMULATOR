@@ -29,7 +29,10 @@ namespace TASK_PROCESSING_SIMULATOR
                 if (verifier.VerifyProcessorTasks(item, result))
                 {
                     result = item;
+                    tasks.Remove(result);
+                    break;
                 }
+
             }
              
             return result;

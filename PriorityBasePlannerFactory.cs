@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class QueueGarbageCollector : IQueueGarbageCollector
+    class PriorityBasePlannerFactory : IFactory<IPlannerTasks>
     {
-        public IQueueTask ColectTask(IQueueTask queueTask)
+        public IPlannerTasks Create()
         {
-           
-
-            return queueTask;
+            return new PlannerTasks(new PriorityBasedProcessVerifier());
         }
     }
 }

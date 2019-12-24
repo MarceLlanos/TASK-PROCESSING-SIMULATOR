@@ -8,7 +8,7 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class PlannerFactory : IOptionsFactory<IPlannerTasks>
     {
-        public IPlannerTasks OptionFactory(string planneSort)
+        public IPlannerTasks Option(string planneSort)
         {
             switch (planneSort)
             {
@@ -16,10 +16,16 @@ namespace TASK_PROCESSING_SIMULATOR
                     return new FIFOPlannerFactory().Create();
 
                 case "Priority Based":
-                    return new PriorityBasePlannerrFactory().Create();
+                    return new PriorityBasePlannerFactory().Create();
 
                 case "Shortest Task First":
                     return new ShortestTaskPlannerFactory().Create();
+
+                case "Round Robin":
+                    return new RoundRobinPlannerFactory().Create();
+
+                case "Round Robin - Priority Based":
+                    return new PriorityBasedRoundRobinFactory().Create();
 
                 default:
                     return new FIFOPlannerFactory().Create();

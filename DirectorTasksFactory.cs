@@ -10,7 +10,7 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public IDirectorTask CreateDirectorTasks(string algorithm, IQueueTask queueTask)
         {
-            var optionPlanner = new OptionMenuFactory().OptionFactory(algorithm);
+            var optionPlanner = new OptionMenuFactory().Option(algorithm);
 
             return new DirectorTask(optionPlanner, queueTask);
         }

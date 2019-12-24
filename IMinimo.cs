@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IQueueGarbageCollector
+    interface IMinimo
     {
-        IQueueTask ColectTask(IQueueTask queue);
+        int IsMinimo( int nValue, int executeValue, int pendingInstructions);
     }
 }

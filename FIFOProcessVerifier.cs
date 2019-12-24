@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class RoundRobin : IProcessorTasksVerifier
+    class FIFOProcessVerifier : IProcessorTasksVerifier
     {
         public bool VerifyProcessorTasks(ITask firstTask, ITask secondTask)
         {
@@ -19,6 +19,5 @@ namespace TASK_PROCESSING_SIMULATOR
 
             return result;
         }
-
     }
 }

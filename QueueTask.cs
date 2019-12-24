@@ -10,6 +10,7 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         List<ITask> tasks;
         int nValue;
+
         public QueueTask(int nValue)
         {
             this.nValue = nValue;
@@ -42,6 +43,17 @@ namespace TASK_PROCESSING_SIMULATOR
             }
 
             return resultTask;
+        }
+
+        public void DeleteTask()
+        {
+            for (int i = 0; i < tasks.Count; i++)
+            {
+                if (tasks[i].GetDataTask().GetInstructionsTask() == tasks[i].GetPendingInstructions())
+                {
+                    tasks.RemoveAt(i);
+                }
+            }
         }
 
         public List<ITask> GetTasks()

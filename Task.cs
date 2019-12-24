@@ -18,7 +18,13 @@ namespace TASK_PROCESSING_SIMULATOR
             this.id = id;
             this.dataTask = dataTask;
             this.dataQueue = dataQueue;
+            executedInstruction = 0;
             
+        }
+
+        public void Execute(int instructions)
+        {
+            executedInstruction += instructions;
         }
 
         public IDataQueue GetDataQueueTask()
@@ -31,14 +37,14 @@ namespace TASK_PROCESSING_SIMULATOR
             return dataTask;
         }
 
-        public int GetExecutedInstructions()
-        {
-            return executedInstruction;
-        }
-
         public int GetId()
         {
             return id;
+        }
+
+        public bool IsCompleted()
+        {
+            return (executedInstruction == dataTask.GetInstructionsTask());
         }
 
         public void SetExecutedInstructions(int executedInstructions)
@@ -50,6 +56,12 @@ namespace TASK_PROCESSING_SIMULATOR
         {
             this.id = id;
         }
+
+        public int GetPendingInstructions()
+        {
+            return dataTask.GetInstructionsTask() - executedInstruction;
+        }
+
 
         public void Show()
         {
