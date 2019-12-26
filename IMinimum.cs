@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface ICarryTaskToQueue
+    interface IMinimum
     {
-        ITask CarryTask(IQueueTask queueTask, ITask task);
+        int GetMinimum( int nValue, int executeValue, int pendingInstructions);
     }
 }

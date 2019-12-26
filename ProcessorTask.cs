@@ -6,29 +6,14 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class ProcessorTask : IProcessorTask<int>
+    class ProcessorTask : IProcessorTask
     {
-        public ITask ProcessTask(ITask task, int executeValue)
+        public ITask ProcessTask(ITask task)
         {
-            var executedInstructions = task.GetPendingInstructions() + executeValue;
-            var resultExecutions = executedInstructions - task.GetDataTask().GetInstructionsTask();
+            var min = new Minimum().GetMinimum(task.GetDataQueueTask().GetNValue(), task.GetDataQueueTask().GetExecuteValue(), task.GetPendingInstructions());
 
-            if (task.GetDataTask().GetInstructionsTask() < executedInstructions )
-            {
-                task.GetDataQueueTask().SetExecuteValue(resultExecutions);
-                task.SetExecutedInstructions(task.GetDataTask().GetInstructionsTask());
-            }
-
-            if (task.GetDataTask().GetInstructionsTask() == executedInstructions)
-            {
-                task.SetExecutedInstructions(task.GetDataTask().GetInstructionsTask());
-                task.GetDataQueueTask().SetExecuteValue(0);
-            }
-
-            if (task.GetDataTask().GetInstructionsTask() > executedInstructions)
-            {
-                task.GetDataQueueTask().SetExecuteValue(executedInstructions);
-            }
+            task.ExecuteTask(min);
+            task.GetDataQueueTask().SetExecuteValue(task.GetDataQueueTask().GetExecuteValue() - min);
 
             return task;
         }

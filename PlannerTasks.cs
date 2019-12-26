@@ -32,7 +32,6 @@ namespace TASK_PROCESSING_SIMULATOR
                     tasks.Remove(result);
                     break;
                 }
-
             }
              
             return result;

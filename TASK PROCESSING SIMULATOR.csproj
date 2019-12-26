@@ -45,10 +45,10 @@
   <ItemGroup>
     <Compile Include="DataQueue.cs" />
     <Compile Include="DataTask.cs" />
-    <Compile Include="ICarryTaskToQueue.cs" />
-    <Compile Include="IMinimo.cs" />
-    <Compile Include="Minimo.cs" />
+    <Compile Include="IMinimum.cs" />
+    <Compile Include="Minimum.cs" />
     <Compile Include="ProcessorTask.cs" />
+    <Compile Include="RoundRobinProcessorTask.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="FIFOProcessVerifier.cs" />
     <Compile Include="GeneratorId.cs" />
@@ -72,7 +72,7 @@
     <Compile Include="OptionsMenu.cs" />
     <Compile Include="PlannerTasks.cs" />
     <Compile Include="PriorityBasedProcessVerifier.cs" />
-    <Compile Include="PriorityBasedRoundRobinFactory.cs" />
+    <Compile Include="RoundRobinPriorityBasedFactory.cs" />
     <Compile Include="PriorityBasePlannerFactory.cs" />
     <Compile Include="FIFOPlannerFactory.cs" />
     <Compile Include="Program.cs" />
@@ -81,7 +81,7 @@
     <Compile Include="QueueTaskFactory.cs" />
     <Compile Include="QueueTask.cs" />
     <Compile Include="RoundRobinPlannerFactory.cs" />
-    <Compile Include="RoundRobinProcessor.cs" />
+    <Compile Include="RoundRobinProcessVerifier.cs" />
     <Compile Include="ShortestTaskFirstProcessVerifier.cs" />
     <Compile Include="ShortestTaskPlannerFactory.cs" />
     <Compile Include="Task.cs" />

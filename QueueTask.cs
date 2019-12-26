@@ -19,8 +19,9 @@ namespace TASK_PROCESSING_SIMULATOR
 
         public bool AddTask(ITask task)
         {
-            if (task.GetDataTask().GetPriorityTask() > 0 || task.GetDataTask().GetInstructionsTask() > 0)
+            if (task.GetDataTask().GetPriorityTask() > 0 && task.GetDataTask().GetInstructionsTask() > 0)
             {
+                DeleteTask(task);
                 tasks.Add(task);
                 return true;
             }
@@ -28,32 +29,9 @@ namespace TASK_PROCESSING_SIMULATOR
             return false;
         }
 
-        public ITask DequeueTask(ITask task)
+        public void DeleteTask(ITask task)
         {
-            ITask resultTask = null;
-
-            for (int i = 0; i < tasks.Count; i++)
-            {
-                if (tasks[i] == task)
-                {
-                    resultTask = tasks[i];
-                    tasks.Insert(0, resultTask);
-                    tasks.RemoveAt(i+1);
-                }
-            }
-
-            return resultTask;
-        }
-
-        public void DeleteTask()
-        {
-            for (int i = 0; i < tasks.Count; i++)
-            {
-                if (tasks[i].GetDataTask().GetInstructionsTask() == tasks[i].GetPendingInstructions())
-                {
-                    tasks.RemoveAt(i);
-                }
-            }
+            tasks.Remove(task);
         }
 
         public List<ITask> GetTasks()

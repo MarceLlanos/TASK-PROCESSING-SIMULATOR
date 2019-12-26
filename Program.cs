@@ -31,7 +31,7 @@ namespace TASK_PROCESSING_SIMULATOR
 
             var queueTask = queueTaskFactory.CreateQueueTaskFatory(int.Parse(valueN));
 
-            var directorTask  = directorTaskFactory.CreateDirectorTasks(planner, queueTask);
+            var directorTask  = directorTaskFactory.CreateDirectorTasks(planner);
 
             while (notEsc)
             {
@@ -78,7 +78,7 @@ namespace TASK_PROCESSING_SIMULATOR
                     Console.WriteLine("");
 
                     dataQueue.SetExecuteValue(int.Parse(execute));
-                    directorTask.DirectTasks(dataQueue);
+                    directorTask.DirectTasks(dataQueue, queueTask);
 
                     notEsc = true;
 
@@ -86,7 +86,7 @@ namespace TASK_PROCESSING_SIMULATOR
 
                 if (actionOption == "SHOW")
                 {
-                    Console.WriteLine("EXECUTE VALUE: {0}", dataQueue.GetExecuteValue());
+                    Console.WriteLine("");
                     queueTask.ShowQueue();
                     Console.WriteLine("");
                     notEsc = true;

@@ -8,11 +8,18 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class DirectorTasksFactory : IDirectorTasksFactory
     {
-        public IDirectorTask CreateDirectorTasks(string algorithm, IQueueTask queueTask)
+        public IDirectorTask CreateDirectorTasks(string algorithm)
         {
             var optionPlanner = new OptionMenuFactory().Option(algorithm);
+            var processorTask = new ProcessorTask();
+            var roundRobinProcessorTask = new RoundRobinProcessorTask();
 
-            return new DirectorTask(optionPlanner, queueTask);
+            if (algorithm == "4")
+            {
+                return new DirectorTask(optionPlanner, roundRobinProcessorTask);
+            }
+
+            return new DirectorTask(optionPlanner, processorTask);
         }
     }
 }

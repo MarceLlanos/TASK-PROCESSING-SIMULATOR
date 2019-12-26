@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class Minimo : IMinimo
+    class Minimum : IMinimum
     {
-        public int IsMinimo(int nValue, int executeValue, int pendingInstructions)
+        public int GetMinimum(int nValue, int executeValue, int pendingInstructions)
         {
             int result = Math.Min(nValue,executeValue);
             result = Math.Min(result, pendingInstructions);

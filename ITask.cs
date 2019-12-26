@@ -5,11 +5,12 @@
         IDataTask GetDataTask();
         int GetPendingInstructions();
         int GetId();
-        void SetId(int id);
         void SetExecutedInstructions(int executedInstructions);
         void Show();
+        void ExecutedTaskLimitedByN(int instructions);
         IDataQueue GetDataQueueTask();
-        void Execute(int min);
+        void ExecuteTask(int minInstructionsToExecute);
         bool IsCompleted();
+        int GetExecutedInstructions();
     }
 }

@@ -26,10 +26,5 @@ namespace TASK_PROCESSING_SIMULATOR
                     return "FIFO";
             }
         }
-
-        public string OptionFactory(string option)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

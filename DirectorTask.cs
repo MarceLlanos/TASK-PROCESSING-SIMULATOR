@@ -8,26 +8,22 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class DirectorTask : IDirectorTask
     {
-        IQueueTask queueTask;
         IPlannerTasks plannerTask;
+        IProcessorTask processorTask;
 
-        public DirectorTask(IPlannerTasks plannerTask, IQueueTask queueTask)
+        public DirectorTask(IPlannerTasks plannerTask, IProcessorTask processorTask)
         {
             this.plannerTask = plannerTask;
-            this.queueTask = queueTask;
+            this.processorTask = processorTask;
             
         }
-
-        public IQueueTask DirectTasks(IDataQueue dataQueue)
+        
+        public IQueueTask DirectTasks(IDataQueue dataQueue, IQueueTask queueTask)
         {
             while (dataQueue.GetExecuteValue() > 0)
             {
-                var taskResult = plannerTask.PlanTasks(queueTask.GetTasks());
-
-                var min = new Minimo().IsMinimo(dataQueue.GetNValue(), dataQueue.GetExecuteValue(), taskResult.GetPendingInstructions());
-                taskResult.Execute(min);
-
-                dataQueue.SetExecuteValue(dataQueue.GetExecuteValue() - min);
+                var task = plannerTask.PlanTasks(queueTask.GetTasks());
+                var taskResult = processorTask.ProcessTask(task);
 
                 if (!taskResult.IsCompleted())
                 {
