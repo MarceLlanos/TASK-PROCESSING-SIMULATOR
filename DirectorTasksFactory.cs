@@ -10,7 +10,7 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public IDirectorTask CreateDirectorTasks(string algorithm)
         {
-            var optionPlanner = new OptionMenuFactory().Option(algorithm);
+            var optionPlanner = new OptionMenuFactory().CreateOption(algorithm);
             var processorTask = new ProcessorTask();
             var roundRobinProcessorTask = new RoundRobinProcessorTask();
 

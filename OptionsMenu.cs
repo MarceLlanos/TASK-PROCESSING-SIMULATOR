@@ -8,7 +8,7 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class OptionsMenu : IOptionsFactory<string>
     {
-        public string Option(string option)
+        public string CreateOption(string option)
         {
             switch (option)
             {

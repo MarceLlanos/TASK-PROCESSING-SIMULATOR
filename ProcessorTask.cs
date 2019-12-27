@@ -10,10 +10,14 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public ITask ProcessTask(ITask task)
         {
-            var min = new Minimum().GetMinimum(task.GetDataQueueTask().GetNValue(), task.GetDataQueueTask().GetExecuteValue(), task.GetPendingInstructions());
+            var nValue = task.GetDataQueueTask().GetNValue();
+            var executeInstructionsValue = task.GetDataQueueTask().GetExecuteInstructionsValue();
+            var pendingInstructions = task.GetPendingInstructions();
 
-            task.ExecuteTask(min);
-            task.GetDataQueueTask().SetExecuteValue(task.GetDataQueueTask().GetExecuteValue() - min);
+            var minimumValueFound = new Minimum().GetMinimum(nValue, executeInstructionsValue, pendingInstructions);
+
+            task.ExecuteTask(minimumValueFound);
+            task.GetDataQueueTask().SetExecuteInstructionsValue(executeInstructionsValue - minimumValueFound);
 
             return task;
         }

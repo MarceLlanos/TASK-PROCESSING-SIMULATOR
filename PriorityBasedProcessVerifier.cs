@@ -10,7 +10,10 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public bool VerifyProcessorTasks(ITask firstTask, ITask secondTask)
         {
-            return (firstTask.GetDataTask().GetPriorityTask() < secondTask.GetDataTask().GetPriorityTask());
+            var firstTaskPriorityValue = firstTask.GetDataTask().GetTaskPriorityValue();
+            var secondTaskPriorityValue = secondTask.GetDataTask().GetTaskPriorityValue();
+
+            return ( firstTaskPriorityValue < secondTaskPriorityValue);
         }
     }
 }

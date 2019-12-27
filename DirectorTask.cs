@@ -20,12 +20,12 @@ namespace TASK_PROCESSING_SIMULATOR
         
         public IQueueTask DirectTasks(IDataQueue dataQueue, IQueueTask queueTask)
         {
-            while (dataQueue.GetExecuteValue() > 0)
+            while (dataQueue.GetExecuteInstructionsValue() > 0)
             {
-                var task = plannerTask.PlanTasks(queueTask.GetTasks());
+                var task = plannerTask.RecieveTask(queueTask.GetTasks());
                 var taskResult = processorTask.ProcessTask(task);
 
-                if (!taskResult.IsCompleted())
+                if (!taskResult.IsTaskCompletedExecuted())
                 {
                     queueTask.AddTask(taskResult);
                 }

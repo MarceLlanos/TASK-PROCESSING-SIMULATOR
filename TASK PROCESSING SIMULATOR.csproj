@@ -48,8 +48,8 @@
     <Compile Include="IMinimum.cs" />
     <Compile Include="Minimum.cs" />
     <Compile Include="ProcessorTask.cs" />
+    <Compile Include="RoundRobinPriorityBasedVerifier.cs" />
     <Compile Include="RoundRobinProcessorTask.cs" />
-    <Compile Include="Factory.cs" />
     <Compile Include="FIFOProcessVerifier.cs" />
     <Compile Include="GeneratorId.cs" />
     <Compile Include="IDataQueue.cs" />

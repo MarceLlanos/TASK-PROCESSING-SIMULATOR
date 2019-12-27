@@ -10,10 +10,10 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public int GetMinimum(int nValue, int executeValue, int pendingInstructions)
         {
-            int result = Math.Min(nValue,executeValue);
-            result = Math.Min(result, pendingInstructions);
+            int resultMinimumValue = Math.Min(nValue,executeValue);
+            resultMinimumValue = Math.Min(resultMinimumValue, pendingInstructions);
 
-            return result;
+            return resultMinimumValue;
         }
     }
 }

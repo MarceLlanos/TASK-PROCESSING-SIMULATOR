@@ -19,10 +19,14 @@ namespace TASK_PROCESSING_SIMULATOR
 
         public bool AddTask(ITask task)
         {
-            if (task.GetDataTask().GetPriorityTask() > 0 && task.GetDataTask().GetInstructionsTask() > 0)
+            var nValue = task.GetDataTask().GetTaskPriorityValue();
+            var taskInstructionsValue = task.GetDataTask().GetTaskInstructionsValue();
+
+            if (nValue > 0 && taskInstructionsValue > 0)
             {
                 DeleteTask(task);
                 tasks.Add(task);
+
                 return true;
             }
 
@@ -41,6 +45,7 @@ namespace TASK_PROCESSING_SIMULATOR
 
         public void ShowQueue()
         {
+            Console.WriteLine("");
             Console.WriteLine("-----------------------------------------");
             Console.WriteLine("N Value: {0}", nValue);
 

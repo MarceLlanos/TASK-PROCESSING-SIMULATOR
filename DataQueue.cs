@@ -17,7 +17,7 @@ namespace TASK_PROCESSING_SIMULATOR
             executeValue = 0;
         }
 
-        public int GetExecuteValue()
+        public int GetExecuteInstructionsValue()
         {
             return executeValue;
         }
@@ -27,12 +27,12 @@ namespace TASK_PROCESSING_SIMULATOR
             return nValue;
         }
 
-        public void SetExecuteValue(int executeValue)
+        public void SetExecuteInstructionsValue(int executeValue)
         {
             this.executeValue = executeValue;
         }
 
-        public int executeValueResult(int resultInstruction, int execute)
+        public int executeInstructionsValueResult(int resultInstruction, int execute)
         {
             return resultInstruction - execute;
         }

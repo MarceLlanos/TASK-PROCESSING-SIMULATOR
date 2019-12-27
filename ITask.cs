@@ -7,10 +7,10 @@
         int GetId();
         void SetExecutedInstructions(int executedInstructions);
         void Show();
-        void ExecutedTaskLimitedByN(int instructions);
+        void ExecuteTaskLimiteByN(int instructionsToExecute);
         IDataQueue GetDataQueueTask();
         void ExecuteTask(int minInstructionsToExecute);
-        bool IsCompleted();
+        bool IsTaskCompletedExecuted();
         int GetExecutedInstructions();
     }
 }

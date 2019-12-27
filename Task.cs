@@ -22,19 +22,21 @@ namespace TASK_PROCESSING_SIMULATOR
             
         }
 
-        public void ExecuteTask(int instructions)
+        public void ExecuteTask( int instructions )
         {
             executedInstructions += instructions;
         }
 
-        public void ExecutedTaskLimitedByN(int instructions)
+        public void ExecuteTaskLimiteByN( int instructions )
         {
-            if (instructions >= dataQueue.GetNValue() )
+            var nValue = dataQueue.GetNValue();
+
+            if (instructions >=  nValue)
             {
-                executedInstructions += dataQueue.GetNValue();
+                executedInstructions += nValue;
             }
 
-            if(instructions < dataQueue.GetNValue())
+            if(instructions < nValue)
             {
                 executedInstructions += instructions;   
             }
@@ -55,19 +57,19 @@ namespace TASK_PROCESSING_SIMULATOR
             return id;
         }
 
-        public bool IsCompleted()
+        public bool IsTaskCompletedExecuted()
         {
-            return (executedInstructions == dataTask.GetInstructionsTask());
+            return (executedInstructions == dataTask.GetTaskInstructionsValue());
         }
 
-        public void SetExecutedInstructions(int executedInstructions)
+        public void SetExecutedInstructions( int executedInstructions )
         {
             this.executedInstructions = executedInstructions;
         }
 
         public int GetPendingInstructions()
         {
-            return dataTask.GetInstructionsTask() - executedInstructions;
+            return dataTask.GetTaskInstructionsValue() - executedInstructions;
         }
 
         public int GetExecutedInstructions()
@@ -78,10 +80,11 @@ namespace TASK_PROCESSING_SIMULATOR
         public void Show()
         {
             Console.WriteLine("id {0}", GetId());
-            Console.WriteLine("Priority {0}", dataTask.GetPriorityTask());
-            Console.WriteLine("Instructions {0}", dataTask.GetInstructionsTask());
+            Console.WriteLine("Priority {0}", dataTask.GetTaskPriorityValue());
+            Console.WriteLine("Instructions {0}", dataTask.GetTaskInstructionsValue());
             Console.WriteLine("Executed Instructions {0}", executedInstructions);
             Console.WriteLine("--------------------------");
+            Console.WriteLine("");
         }
 
         

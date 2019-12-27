@@ -8,7 +8,7 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class PlannerFactory : IOptionsFactory<IPlannerTasks>
     {
-        public IPlannerTasks Option(string planneSort)
+        public IPlannerTasks CreateOption(string planneSort)
         {
             switch (planneSort)
             {

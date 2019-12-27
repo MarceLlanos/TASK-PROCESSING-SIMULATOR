@@ -9,6 +9,6 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     public interface IPlannerTasks
     {
-        ITask PlanTasks(List<ITask> tasks);
+        ITask RecieveTask(List<ITask> tasks);
     }
 } 

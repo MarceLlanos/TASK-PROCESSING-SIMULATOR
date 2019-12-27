@@ -10,19 +10,25 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public ITask ProcessTask(ITask task)
         {
-            var minimumValue = new Minimum().GetMinimum(task.GetDataQueueTask().GetNValue(), task.GetDataQueueTask().GetExecuteValue(), task.GetPendingInstructions());
-            var executedValue = minimumValue - task.GetExecutedInstructions();
+            var nValue = task.GetDataQueueTask().GetNValue();
+            var executeValue = task.GetDataQueueTask().GetExecuteInstructionsValue();
+            var pendingValue = task.GetPendingInstructions();
+            var executedInstructions = task.GetExecutedInstructions();
 
-            if (task.GetExecutedInstructions() > 0 && task.GetExecutedInstructions() < task.GetDataQueueTask().GetNValue())
+
+            var minimumValueToExecute = new Minimum().GetMinimum(nValue, executeValue, pendingValue);
+            var valueResultExecuted = minimumValueToExecute - task.GetExecutedInstructions();
+
+            if ( executedInstructions > 0 && executedInstructions < nValue)
             {
-                task.ExecutedTaskLimitedByN(executedValue);
-                task.GetDataQueueTask().SetExecuteValue(task.GetDataQueueTask().GetExecuteValue() - executedValue);
+                task.ExecuteTaskLimiteByN(valueResultExecuted);
+                task.GetDataQueueTask().SetExecuteInstructionsValue(executeValue - valueResultExecuted);
 
             }
             else
             {
-                task.ExecutedTaskLimitedByN(minimumValue);
-                task.GetDataQueueTask().SetExecuteValue(task.GetDataQueueTask().GetExecuteValue() - minimumValue);
+                task.ExecuteTaskLimiteByN(minimumValueToExecute);
+                task.GetDataQueueTask().SetExecuteInstructionsValue(executeValue - minimumValueToExecute);
 
             }
 
