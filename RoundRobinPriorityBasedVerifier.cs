@@ -8,7 +8,7 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class RoundRobinPriorityBasedVerifier : IProcessorTasksVerifier
     {
-        public bool VerifyProcessorTasks(ITask firstTask, ITask secondTask)
+        public bool IsBestTaskToProcess(ITask firstTask, ITask secondTask)
         {
             return false;
         }

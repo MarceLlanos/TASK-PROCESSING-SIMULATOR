@@ -20,9 +20,9 @@ namespace TASK_PROCESSING_SIMULATOR
         
         public IQueueTask DirectTasks(IDataQueue dataQueue, IQueueTask queueTask)
         {
-            while (dataQueue.GetExecuteInstructionsValue() > 0)
+            while (dataQueue.GetExecuteInstructionsNumber() > 0)
             {
-                var task = plannerTask.RecieveTask(queueTask.GetTasks());
+                var task = plannerTask.ExetendTask(queueTask.GetTasks());
                 var taskResult = processorTask.ProcessTask(task);
 
                 if (!taskResult.IsTaskCompletedExecuted())

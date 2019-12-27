@@ -8,6 +8,6 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     interface IProcessorTasksVerifier
     {
-        bool VerifyProcessorTasks(ITask firstTask, ITask secondTask);
+        bool IsBestTaskToProcess(ITask firstTask, ITask secondTask);
     }
 }

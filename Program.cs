@@ -77,7 +77,7 @@ namespace TASK_PROCESSING_SIMULATOR
                     Console.WriteLine("EXECUTE {0}", execute);
                     Console.WriteLine("");
 
-                    dataQueue.SetExecuteInstructionsValue(int.Parse(execute));
+                    dataQueue.SetNumberOfExecutions(int.Parse(execute));
                     directorTask.DirectTasks(dataQueue, queueTask);
 
                     notEsc = true;

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class RoundRobinProcessVerifier : IProcessorTasksVerifier
+    class RoundRobinProcessorTaskVerifier : IProcessorTasksVerifier
     {
-        public bool VerifyProcessorTasks(ITask firstTask, ITask secondTask)
+        public bool IsBestTaskToProcess(ITask firstTask, ITask secondTask)
         {
             var firstTaskExecutedInstructions = firstTask.GetExecutedInstructions();
             var secondTaskExecutedInstructions = secondTask.GetExecutedInstructions();

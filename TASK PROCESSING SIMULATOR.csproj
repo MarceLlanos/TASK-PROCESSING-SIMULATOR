@@ -50,7 +50,7 @@
     <Compile Include="ProcessorTask.cs" />
     <Compile Include="RoundRobinPriorityBasedVerifier.cs" />
     <Compile Include="RoundRobinProcessorTask.cs" />
-    <Compile Include="FIFOProcessVerifier.cs" />
+    <Compile Include="FIFOProcessorTaskVerifier.cs" />
     <Compile Include="GeneratorId.cs" />
     <Compile Include="IDataQueue.cs" />
     <Compile Include="IDataTask.cs" />
@@ -71,7 +71,7 @@
     <Compile Include="OptionMenuFactory.cs" />
     <Compile Include="OptionsMenu.cs" />
     <Compile Include="PlannerTasks.cs" />
-    <Compile Include="PriorityBasedProcessVerifier.cs" />
+    <Compile Include="PriorityBasedProcessorTaskVerifier.cs" />
     <Compile Include="RoundRobinPriorityBasedFactory.cs" />
     <Compile Include="PriorityBasePlannerFactory.cs" />
     <Compile Include="FIFOPlannerFactory.cs" />
@@ -81,8 +81,8 @@
     <Compile Include="QueueTaskFactory.cs" />
     <Compile Include="QueueTask.cs" />
     <Compile Include="RoundRobinPlannerFactory.cs" />
-    <Compile Include="RoundRobinProcessVerifier.cs" />
-    <Compile Include="ShortestTaskFirstProcessVerifier.cs" />
+    <Compile Include="RoundRobinProcessorTaskVerifier.cs" />
+    <Compile Include="ShortestTaskFirstProcessorTaskVerifier.cs" />
     <Compile Include="ShortestTaskPlannerFactory.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="TaskFactory.cs" />

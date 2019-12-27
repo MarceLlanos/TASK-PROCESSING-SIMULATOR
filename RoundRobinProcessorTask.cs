@@ -10,25 +10,25 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public ITask ProcessTask(ITask task)
         {
-            var nValue = task.GetDataQueueTask().GetNValue();
-            var executeValue = task.GetDataQueueTask().GetExecuteInstructionsValue();
-            var pendingValue = task.GetPendingInstructions();
-            var executedInstructions = task.GetExecutedInstructions();
+            var numberN = task.GetDataQueueTask().GetNumberN();
+            var numberExecutions = task.GetDataQueueTask().GetExecuteInstructionsNumber();
+            var pendingInstructions = task.GetPendingInstructions();
+            var instructionsExecuted = task.GetExecutedInstructions();
 
 
-            var minimumValueToExecute = new Minimum().GetMinimum(nValue, executeValue, pendingValue);
-            var valueResultExecuted = minimumValueToExecute - task.GetExecutedInstructions();
+            var mineNumberFound = new Minimum().GetMinimum(numberN, numberExecutions, pendingInstructions);
+            var numberToExecute = mineNumberFound - instructionsExecuted;
 
-            if ( executedInstructions > 0 && executedInstructions < nValue)
+            if ( instructionsExecuted > 0 && instructionsExecuted < numberN)
             {
-                task.ExecuteTaskLimiteByN(valueResultExecuted);
-                task.GetDataQueueTask().SetExecuteInstructionsValue(executeValue - valueResultExecuted);
+                task.ExecuteTaskLimitedByN(numberToExecute);
+                task.GetDataQueueTask().SetNumberOfExecutions(numberExecutions - numberToExecute);
 
             }
             else
             {
-                task.ExecuteTaskLimiteByN(minimumValueToExecute);
-                task.GetDataQueueTask().SetExecuteInstructionsValue(executeValue - minimumValueToExecute);
+                task.ExecuteTaskLimitedByN(mineNumberFound);
+                task.GetDataQueueTask().SetNumberOfExecutions(numberExecutions - mineNumberFound);
 
             }
 

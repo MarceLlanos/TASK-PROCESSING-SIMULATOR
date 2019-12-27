@@ -8,14 +8,14 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class PlannerTasks : IPlannerTasks
     {
-        IProcessorTasksVerifier verifier;
+        IProcessorTasksVerifier verifyTaskToProcess;
 
-        public PlannerTasks(IProcessorTasksVerifier verifier)
+        public PlannerTasks(IProcessorTasksVerifier verifyTaskToProcess)
         {
-            this.verifier = verifier;
+            this.verifyTaskToProcess = verifyTaskToProcess;
         }
 
-        public ITask RecieveTask(List<ITask> tasks)
+        public ITask ExetendTask(List<ITask> tasks)
         {
             if (tasks == null || tasks.Count == 0)
             {
@@ -26,7 +26,7 @@ namespace TASK_PROCESSING_SIMULATOR
 
             foreach (var item in tasks)
             {
-                if (verifier.VerifyProcessorTasks(item, result))
+                if (verifyTaskToProcess.IsBestTaskToProcess(item, result))
                 {
                     result = item;
                     tasks.Remove(result);

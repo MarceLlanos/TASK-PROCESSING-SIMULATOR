@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class PriorityBasedProcessVerifier : IProcessorTasksVerifier
+    class PriorityBasedProcessorTaskVerifier : IProcessorTasksVerifier
     {
-        public bool VerifyProcessorTasks(ITask firstTask, ITask secondTask)
+        public bool IsBestTaskToProcess(ITask firstTask, ITask secondTask)
         {
             var firstTaskPriorityValue = firstTask.GetDataTask().GetTaskPriorityValue();
             var secondTaskPriorityValue = secondTask.GetDataTask().GetTaskPriorityValue();

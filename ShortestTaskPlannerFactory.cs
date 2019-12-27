@@ -10,7 +10,7 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public IPlannerTasks Create()
         {
-            return new PlannerTasks(new ShortestTaskFirstProcessVerifier());
+            return new PlannerTasks(new ShortestTaskFirstProcessorTaskVerifier());
         }
     }
 }

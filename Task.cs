@@ -27,9 +27,9 @@ namespace TASK_PROCESSING_SIMULATOR
             executedInstructions += instructions;
         }
 
-        public void ExecuteTaskLimiteByN( int instructions )
+        public void ExecuteTaskLimitedByN( int instructions )
         {
-            var nValue = dataQueue.GetNValue();
+            var nValue = dataQueue.GetNumberN();
 
             if (instructions >=  nValue)
             {

@@ -8,33 +8,28 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class DataQueue : IDataQueue
     {
-        int nValue;
-        int executeValue;
+        int numberN;
+        int numberExecutions;
 
-        public DataQueue(int nValue)
+        public DataQueue(int numberN)
         {
-            this.nValue = nValue;
-            executeValue = 0;
+            this.numberN = numberN;
+            numberExecutions = 0;
         }
 
-        public int GetExecuteInstructionsValue()
+        public int GetExecuteInstructionsNumber()
         {
-            return executeValue;
+            return numberExecutions;
         }
 
-        public int GetNValue()
+        public int GetNumberN()
         {
-            return nValue;
+            return numberN;
         }
 
-        public void SetExecuteInstructionsValue(int executeValue)
+        public void SetNumberOfExecutions(int executeValue)
         {
-            this.executeValue = executeValue;
-        }
-
-        public int executeInstructionsValueResult(int resultInstruction, int execute)
-        {
-            return resultInstruction - execute;
+            this.numberExecutions = executeValue;
         }
     }
 }
