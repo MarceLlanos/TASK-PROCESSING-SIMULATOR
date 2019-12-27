@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class RoundRobinPriorityBasedFactory : IFactory<IPlannerTasks>
+    class RoundRobinPriorityBasedFactory : IFactory<IPlanner>
     {
-        public IPlannerTasks Create()
+        public IPlanner Create()
         {
             return new PlannerTasks(new PriorityBasedProcessorTaskVerifier());
         }

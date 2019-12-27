@@ -8,9 +8,9 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class QueueTaskFactory : ITaskQueueFactory
     {
-        public ITaskQueue CreateTaskQueueFatory(int numberN)
+        public ITaskQueue CreateQueueTaskFatory(int nValue)
         {
-            return new TaskQueue(numberN);
+            return new TaskQueue(nValue);
         }
     }
 }

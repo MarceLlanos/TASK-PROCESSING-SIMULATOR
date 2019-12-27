@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class GeneratorId : IGenerateId
+    class GeneratorId : IGeneratorId
     {
         int idTask;
 

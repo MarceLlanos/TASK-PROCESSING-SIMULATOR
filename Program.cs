@@ -13,78 +13,42 @@ namespace TASK_PROCESSING_SIMULATOR
             bool notEsc = true;
 
             ITaskQueueFactory queueTaskFactory = new QueueTaskFactory();
-            IDirectorTasksFactory directorTaskFactory = new DirectorTasksFactory();
+            IDirectorFactory directorTaskFactory = new DirectorTasksFactory();
             ITaskFactory task = new TaskFactory(new GeneratorId());
-            
-            Console.WriteLine("Choose the Algorithm:");
-            Console.WriteLine("1 = FIFO");
-            Console.WriteLine("2 = Priority Based");
-            Console.WriteLine("3 = Shortest Task First");
-            Console.WriteLine("4 = Round Robin");
-            Console.WriteLine("5 = Round Robin - Priority Based");
-            string planner = Console.ReadLine();
+            IDisplayer display = new Displayer();
 
-            Console.WriteLine("What is the value for N:");
-            string valueN = Console.ReadLine();
+            var algorithmMenu = display.AlgorithmMenuDisplay();
+            var numberN = display.NumberNDisplay();
 
-            IProcessorData dataQueue = new ProcessorData(int.Parse(valueN));
-
-            var queueTask = queueTaskFactory.CreateTaskQueueFatory(int.Parse(valueN));
-
-            var directorTask  = directorTaskFactory.CreateDirectorTasks(planner);
+            IProcessorData dataQueue = new ProcessorData(int.Parse(numberN));
+            var queueTask = queueTaskFactory.CreateQueueTaskFatory(int.Parse(numberN));
+            var directorTask  = directorTaskFactory.CreateDirectorTasks(algorithmMenu);
 
             while (notEsc)
             {
-                Console.WriteLine("ADD");
-                Console.WriteLine("EXECUTE");
-                Console.WriteLine("SHOW");
-                Console.WriteLine("ESC");
+                var option = display.SettingMenuDisplay();
 
-                string actionOption = Console.ReadLine();
-
-                if (actionOption == "ADD")
+                if (option == "ADD")
                 {
-                    Console.WriteLine("Add task's priority:");
-                    string priorityTask = Console.ReadLine();
-                    Console.WriteLine("Add task's instructions");
-                    string instructionsTask = Console.ReadLine();
+                    var priorityNumber = display.PriorityNumber();
+                    var instructionsNumber = display.InstructionsNumber();
 
-                    Console.WriteLine("ADD {0} {1}", priorityTask, instructionsTask);
-
-                    var newTask = task.CreateTask(int.Parse(priorityTask), int.Parse(instructionsTask), dataQueue);
-
-                    if (queueTask.AddTask(newTask))
-                    {
-                        
-                        Console.WriteLine("ADDED!");
-                        Console.WriteLine("");
-                    }
-                    else
-                    {
-                        Console.WriteLine("FAIL TO ADDED");
-                        Console.WriteLine("");
-
-                    }
+                    task.CreateTask(int.Parse(priorityNumber), int.Parse(instructionsNumber), dataQueue);
 
                     notEsc = true;
                 }
 
-                if (actionOption == "EXECUTE")
+                if (option == "EXECUTE")
                 {
-                    Console.WriteLine("number of executions:");
-                    string execute = Console.ReadLine();
+                    var executionsNumber = display.ExecuteNumber();
 
-                    Console.WriteLine("EXECUTE {0}", execute);
-                    Console.WriteLine("");
-
-                    dataQueue.SetNumberOfExecutions(int.Parse(execute));
+                    dataQueue.SetNumberOfExecutions(int.Parse(executionsNumber));
                     directorTask.DigestProcess(dataQueue, queueTask);
 
                     notEsc = true;
-
                 }
 
-                if (actionOption == "SHOW")
+                if (option == "SHOW")
                 {
                     Console.WriteLine("");
                     queueTask.ShowQueue();
@@ -92,7 +56,7 @@ namespace TASK_PROCESSING_SIMULATOR
                     notEsc = true;
                 }
 
-                if (actionOption == "ESC")
+                if (option == "ESC")
                 {
                     notEsc = false;
                 }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class DirectorTask : IProcessDirector
+    class Director : IDirector
     {
-        IPlannerTasks plannerTask;
+        IPlanner plannerTask;
         IProcessorTask processorTask;
 
-        public DirectorTask(IPlannerTasks plannerTask, IProcessorTask processorTask)
+        public Director(IPlanner plannerTask, IProcessorTask processorTask)
         {
             this.plannerTask = plannerTask;
             this.processorTask = processorTask;

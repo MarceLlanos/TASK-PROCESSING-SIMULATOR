@@ -43,12 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDisplayer.cs" />
     <Compile Include="ProcessorData.cs" />
+    <Compile Include="Displayer.cs" />
     <Compile Include="TaskData.cs" />
     <Compile Include="IMinimum.cs" />
     <Compile Include="Minimum.cs" />
     <Compile Include="ProcessorTask.cs" />
-    <Compile Include="RoundRobinPriorityBasedVerifier.cs" />
     <Compile Include="RoundRobinProcessorTask.cs" />
     <Compile Include="FIFOProcessorTaskVerifier.cs" />
     <Compile Include="GeneratorId.cs" />
@@ -56,17 +57,17 @@
     <Compile Include="ITaskData.cs" />
     <Compile Include="IProcessorTask.cs" />
     <Compile Include="IFactory.cs" />
-    <Compile Include="IGenerateId.cs" />
-    <Compile Include="IDirectorTasksFactory.cs" />
-    <Compile Include="IProcessDirector.cs" />
+    <Compile Include="IGeneratorId.cs" />
+    <Compile Include="IDirectorFactory.cs" />
+    <Compile Include="IDirector.cs" />
     <Compile Include="IProcessorTasksVerifier.cs" />
-    <Compile Include="IPlannerTasks.cs" />
+    <Compile Include="IPlanner.cs" />
     <Compile Include="IOptionsFactory.cs" />
     <Compile Include="ITaskQueue.cs" />
     <Compile Include="ITaskQueueFactory.cs" />
     <Compile Include="ITask.cs" />
     <Compile Include="ITaskFactory.cs" />
-    <Compile Include="DirectorTask.cs" />
+    <Compile Include="Director.cs" />
     <Compile Include="DirectorTasksFactory.cs" />
     <Compile Include="OptionMenuFactory.cs" />
     <Compile Include="OptionsMenu.cs" />

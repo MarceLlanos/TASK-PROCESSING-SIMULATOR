@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    public interface IGenerateId
+    public interface IDirectorFactory
     {
-        int GenerateId();
+        IDirector CreateDirectorTasks( string algorithm );
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    public interface IPlannerTasks
+    public interface IDirector
     {
-        ITask ExetendTask(List<ITask> tasks);
+        ITaskQueue DigestProcess(IProcessorData processorData, ITaskQueue taskQueue);
     }
-} 
+}

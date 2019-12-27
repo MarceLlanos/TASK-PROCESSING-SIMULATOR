@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class PlannerTasks : IPlannerTasks
+    class PlannerTasks : IPlanner
     {
         IProcessorTasksVerifier verifyTaskToProcess;
 

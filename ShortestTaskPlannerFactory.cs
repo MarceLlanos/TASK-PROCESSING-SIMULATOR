@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class ShortestTaskPlannerFactory : IFactory<IPlannerTasks>
+    class ShortestTaskPlannerFactory : IFactory<IPlanner>
     {
-        public IPlannerTasks Create()
+        public IPlanner Create()
         {
             return new PlannerTasks( new ShortestTaskFirstProcessorTaskVerifier() );
         }

@@ -8,18 +8,18 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class TaskFactory : ITaskFactory
     {
-        IGenerateId generateId;
+        IGeneratorId generateId;
 
-        public TaskFactory( IGenerateId generateId)
+        public TaskFactory( IGeneratorId generateId)
         {
             this.generateId = generateId;
         }
 
-        public ITask CreateTask(int priority, int instructions, IProcessorData dataQueue)
+        public ITask CreateTask(int priorityNumber, int instructionsNumber, IProcessorData processorData)
         {
-            var dataTask = new TaskData(priority, instructions);
+            var dataTask = new TaskData(priorityNumber, instructionsNumber);
 
-            return new Task(generateId.GenerateId(), dataTask, dataQueue);
+            return new Task(generateId.GenerateId(), dataTask, processorData);
         }
     }
 }

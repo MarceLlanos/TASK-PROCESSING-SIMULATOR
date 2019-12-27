@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class DirectorTasksFactory : IDirectorTasksFactory
+    class DirectorTasksFactory : IDirectorFactory
     {
-        public IProcessDirector CreateDirectorTasks(string algorithm)
+        public IDirector CreateDirectorTasks(string algorithm)
         {
             var optionPlanner = new OptionMenuFactory().CreateOption(algorithm);
             var processorTask = new ProcessorTask();
@@ -16,10 +16,10 @@ namespace TASK_PROCESSING_SIMULATOR
 
             if (algorithm == "4")
             {
-                return new DirectorTask(optionPlanner, roundRobinProcessorTask);
+                return new Director(optionPlanner, roundRobinProcessorTask);
             }
 
-            return new DirectorTask(optionPlanner, processorTask);
+            return new Director(optionPlanner, processorTask);
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public interface ITaskQueueFactory
     {
-        ITaskQueue CreateTaskQueueFatory(int numberN);
+        ITaskQueue CreateQueueTaskFatory(int nValue);
 
     }
 }
