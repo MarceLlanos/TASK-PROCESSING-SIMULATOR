@@ -8,6 +8,6 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     interface IOptionsFactory<T>
     {
-        T OptionFactory(string option);
+        T CreateOption(string option);
     }
 }

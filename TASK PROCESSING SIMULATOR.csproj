@@ -45,9 +45,12 @@
   <ItemGroup>
     <Compile Include="DataQueue.cs" />
     <Compile Include="DataTask.cs" />
+    <Compile Include="IMinimum.cs" />
+    <Compile Include="Minimum.cs" />
     <Compile Include="ProcessorTask.cs" />
-    <Compile Include="Factory.cs" />
-    <Compile Include="FIFOProcesstVerifier.cs" />
+    <Compile Include="RoundRobinPriorityBasedVerifier.cs" />
+    <Compile Include="RoundRobinProcessorTask.cs" />
+    <Compile Include="FIFOProcessVerifier.cs" />
     <Compile Include="GeneratorId.cs" />
     <Compile Include="IDataQueue.cs" />
     <Compile Include="IDataTask.cs" />
@@ -57,7 +60,6 @@
     <Compile Include="IDirectorTasksFactory.cs" />
     <Compile Include="IDirectorTask.cs" />
     <Compile Include="IProcessorTasksVerifier.cs" />
-    <Compile Include="IOptionsMenu.cs" />
     <Compile Include="IPlannerTasks.cs" />
     <Compile Include="IOptionsFactory.cs" />
     <Compile Include="IQueueTask.cs" />
@@ -70,15 +72,16 @@
     <Compile Include="OptionsMenu.cs" />
     <Compile Include="PlannerTasks.cs" />
     <Compile Include="PriorityBasedProcessVerifier.cs" />
-    <Compile Include="PriorityBasedRoundRobin.cs" />
-    <Compile Include="PriorityBasePlannerrFactory.cs" />
+    <Compile Include="RoundRobinPriorityBasedFactory.cs" />
+    <Compile Include="PriorityBasePlannerFactory.cs" />
     <Compile Include="FIFOPlannerFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PlannerFactory.cs" />
     <Compile Include="QueueTaskFactory.cs" />
     <Compile Include="QueueTask.cs" />
-    <Compile Include="RoundRobin.cs" />
+    <Compile Include="RoundRobinPlannerFactory.cs" />
+    <Compile Include="RoundRobinProcessVerifier.cs" />
     <Compile Include="ShortestTaskFirstProcessVerifier.cs" />
     <Compile Include="ShortestTaskPlannerFactory.cs" />
     <Compile Include="Task.cs" />

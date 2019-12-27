@@ -8,31 +8,16 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class ProcessorTask : IProcessorTask
     {
-        public ITask ProcessTask(ITask task, int executeValue)
+        public ITask ProcessTask(ITask task)
         {
-            if(task.GetDataTask().GetInstructionsTask() - task.GetExecutedInstructions()> 0)
-            {
-                var instructionsExecuted = task.GetDataTask().GetInstructionsTask() - task.GetExecutedInstructions();
-                var nowInstructionsExecuted = instructionsExecuted - executeValue;
+            var nValue = task.GetDataQueueTask().GetNValue();
+            var executeInstructionsValue = task.GetDataQueueTask().GetExecuteInstructionsValue();
+            var pendingInstructions = task.GetPendingInstructions();
 
-                if (nowInstructionsExecuted > 0)
-                {
-                    task.SetExecutedInstructions(executeValue + task.GetExecutedInstructions());
-                    task.GetDataQueueTask().SetExecuteValue(0);
-                }
+            var minimumValueFound = new Minimum().GetMinimum(nValue, executeInstructionsValue, pendingInstructions);
 
-                if(nowInstructionsExecuted < 0)
-                {
-                    task.SetId(0);
-                    task.GetDataQueueTask().SetExecuteValue(nowInstructionsExecuted *-1);
-                }
-
-                if (nowInstructionsExecuted == 0)
-                {
-                    task.SetId(0);
-                    task.GetDataQueueTask().SetExecuteValue(0);
-                }
-            }
+            task.ExecuteTask(minimumValueFound);
+            task.GetDataQueueTask().SetExecuteInstructionsValue(executeInstructionsValue - minimumValueFound);
 
             return task;
         }

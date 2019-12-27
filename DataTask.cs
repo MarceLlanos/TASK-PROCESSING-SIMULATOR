@@ -17,12 +17,12 @@ namespace TASK_PROCESSING_SIMULATOR
             this.instructionsTask = instructionsTask; 
         }
 
-        public int GetInstructionsTask()
+        public int GetTaskInstructionsValue()
         {
             return instructionsTask;
         }
 
-        public int GetPriorityTask()
+        public int GetTaskPriorityValue()
         {
             return priorityTask;
         }

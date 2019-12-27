@@ -11,13 +11,13 @@ namespace TASK_PROCESSING_SIMULATOR
         int nValue;
         int executeValue;
 
-        public DataQueue(int nValue, int executeValue)
+        public DataQueue(int nValue)
         {
             this.nValue = nValue;
-            this.executeValue = executeValue;
+            executeValue = 0;
         }
 
-        public int GetExecuteValue()
+        public int GetExecuteInstructionsValue()
         {
             return executeValue;
         }
@@ -27,9 +27,14 @@ namespace TASK_PROCESSING_SIMULATOR
             return nValue;
         }
 
-        public void SetExecuteValue(int executeValue)
+        public void SetExecuteInstructionsValue(int executeValue)
         {
             this.executeValue = executeValue;
+        }
+
+        public int executeInstructionsValueResult(int resultInstruction, int execute)
+        {
+            return resultInstruction - execute;
         }
     }
 }

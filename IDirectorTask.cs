@@ -8,6 +8,6 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     public interface IDirectorTask
     {
-        IQueueTask DirectTasks(int execute);
+        IQueueTask DirectTasks(IDataQueue dataQueue, IQueueTask queueTask);
     }
 }

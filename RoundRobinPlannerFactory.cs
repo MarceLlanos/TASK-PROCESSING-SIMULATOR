@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class PriorityBasePlannerrFactory : IFactory<IPlannerTasks>
+    class RoundRobinPlannerFactory : IFactory<IPlannerTasks>
     {
         public IPlannerTasks Create()
         {
-            return new PlannerTasks(new PriorityBasedProcessVerifier());
+            return new PlannerTasks(new RoundRobinProcessVerifier());
         }
     }
 }

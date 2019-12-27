@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class Factory
+    interface IMinimum
     {
+        int GetMinimum( int nValue, int executeValue, int pendingInstructions);
     }
 }

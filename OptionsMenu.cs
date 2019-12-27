@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class OptionsMenu : IOptionsMenu
+    class OptionsMenu : IOptionsFactory<string>
     {
-        public string MenuOption(string option)
+        public string CreateOption(string option)
         {
             switch (option)
             {
@@ -18,6 +18,10 @@ namespace TASK_PROCESSING_SIMULATOR
                     return "Priority Based";
                 case "3":
                     return "Shortest Task First";
+                case "4":
+                    return "Round Robin";
+                case "5":
+                    return "Round Robin - Priority Based";
                 default:
                     return "FIFO";
             }

@@ -9,7 +9,9 @@ namespace TASK_PROCESSING_SIMULATOR
     public interface IDataQueue
     {
         int GetNValue();
-        int GetExecuteValue();
-        void SetExecuteValue(int executeValue);
+        int GetExecuteInstructionsValue();
+        void SetExecuteInstructionsValue(int executeInstructionsValue);
+        int executeInstructionsValueResult(int resultInstructionExecuted, int execute);
+
     }
 }

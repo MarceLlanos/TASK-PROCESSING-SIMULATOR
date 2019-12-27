@@ -8,11 +8,11 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class OptionMenuFactory : IOptionsFactory<IPlannerTasks>
     {
-        public IPlannerTasks OptionFactory(string option)
+        public IPlannerTasks CreateOption(string option)
         {
-            var optionMenu = new OptionsMenu().MenuOption(option);
+            var optionMenu = new OptionsMenu().CreateOption(option);
 
-            return new PlannerFactory().OptionFactory(optionMenu);
+            return new PlannerFactory().CreateOption(optionMenu);
         }
     }
 }

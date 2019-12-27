@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class FIFOPlannerFactory : IFactory<IPlannerTasks>
+    class PriorityBasePlannerFactory : IFactory<IPlannerTasks>
     {
         public IPlannerTasks Create()
         {
-            return new PlannerTasks(new FIFOProcessVerifier());
+            return new PlannerTasks(new PriorityBasedProcessVerifier());
         }
-
     }
 }

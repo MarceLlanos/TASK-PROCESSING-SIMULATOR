@@ -8,39 +8,29 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class DirectorTask : IDirectorTask
     {
-        IQueueTask queueTask;
         IPlannerTasks plannerTask;
-        public DirectorTask(IPlannerTasks plannerTask, IQueueTask queueTask)
+        IProcessorTask processorTask;
+
+        public DirectorTask(IPlannerTasks plannerTask, IProcessorTask processorTask)
         {
             this.plannerTask = plannerTask;
-            this.queueTask = queueTask;
+            this.processorTask = processorTask;
+            
         }
-
-        public IQueueTask DirectTasks(int execute)
+        
+        public IQueueTask DirectTasks(IDataQueue dataQueue, IQueueTask queueTask)
         {
-            IQueueTask queueTaskResult = queueTask;
-            var processorTask = new ProcessorTask();
-            var task = plannerTask.PlanTasks(queueTask.GetTasks());
-
-            while (task != null)
+            while (dataQueue.GetExecuteInstructionsValue() > 0)
             {
-                foreach (var item in queueTaskResult.GetTasks())
-                {
-                    if (item.GetId() == 0)
-                    {
-                        queueTask.DeleteTask(item);
-                    }
+                var task = plannerTask.RecieveTask(queueTask.GetTasks());
+                var taskResult = processorTask.ProcessTask(task);
 
-                    if (item == task)
-                    {
-                        var taskResult = processorTask.ProcessTask(task, execute);
-                        queueTaskResult.DeleteTask(item);
-                        queueTaskResult.AddTask(taskResult);
-                    }
+                if (!taskResult.IsTaskCompletedExecuted())
+                {
+                    queueTask.AddTask(taskResult);
                 }
             }
-
-            return queueTaskResult;
+            return queueTask;
         }
     }
 }

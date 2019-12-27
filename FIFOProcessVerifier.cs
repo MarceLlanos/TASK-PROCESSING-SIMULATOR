@@ -6,18 +6,11 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class FIFOProcesstVerifier : IProcessorTasksVerifier
+    class FIFOProcessVerifier : IProcessorTasksVerifier
     {
         public bool VerifyProcessorTasks(ITask firstTask, ITask secondTask)
         {
-            bool result = false;
-
-            if (firstTask.GetId() < secondTask.GetId())
-            {
-                result = true;
-            }
-
-            return result;
+            return (firstTask.GetId() < secondTask.GetId());
         }
     }
 }

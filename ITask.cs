@@ -3,11 +3,14 @@
     public interface ITask
     {
         IDataTask GetDataTask();
-        int GetExecutedInstructions();
+        int GetPendingInstructions();
         int GetId();
-        void SetId(int id);
         void SetExecutedInstructions(int executedInstructions);
         void Show();
+        void ExecuteTaskLimiteByN(int instructionsToExecute);
         IDataQueue GetDataQueueTask();
+        void ExecuteTask(int minInstructionsToExecute);
+        bool IsTaskCompletedExecuted();
+        int GetExecutedInstructions();
     }
 }

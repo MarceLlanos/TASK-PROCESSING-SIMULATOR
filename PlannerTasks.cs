@@ -15,7 +15,7 @@ namespace TASK_PROCESSING_SIMULATOR
             this.verifier = verifier;
         }
 
-        public ITask PlanTasks(List<ITask> tasks)
+        public ITask RecieveTask(List<ITask> tasks)
         {
             if (tasks == null || tasks.Count == 0)
             {
@@ -28,7 +28,9 @@ namespace TASK_PROCESSING_SIMULATOR
             {
                 if (verifier.VerifyProcessorTasks(item, result))
                 {
-                    return result = item;
+                    result = item;
+                    tasks.Remove(result);
+                    break;
                 }
             }
              

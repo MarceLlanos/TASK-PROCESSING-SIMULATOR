@@ -10,7 +10,7 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         IDataTask dataTask;
         IDataQueue dataQueue;
-        int executedInstruction;
+        int executedInstructions;
         int id;
 
         public Task(int id, IDataTask dataTask, IDataQueue dataQueue)
@@ -18,7 +18,28 @@ namespace TASK_PROCESSING_SIMULATOR
             this.id = id;
             this.dataTask = dataTask;
             this.dataQueue = dataQueue;
+            executedInstructions = 0;
             
+        }
+
+        public void ExecuteTask( int instructions )
+        {
+            executedInstructions += instructions;
+        }
+
+        public void ExecuteTaskLimiteByN( int instructions )
+        {
+            var nValue = dataQueue.GetNValue();
+
+            if (instructions >=  nValue)
+            {
+                executedInstructions += nValue;
+            }
+
+            if(instructions < nValue)
+            {
+                executedInstructions += instructions;   
+            }
         }
 
         public IDataQueue GetDataQueueTask()
@@ -31,33 +52,41 @@ namespace TASK_PROCESSING_SIMULATOR
             return dataTask;
         }
 
-        public int GetExecutedInstructions()
-        {
-            return executedInstruction;
-        }
-
         public int GetId()
         {
             return id;
         }
 
-        public void SetExecutedInstructions(int executedInstructions)
+        public bool IsTaskCompletedExecuted()
         {
-            this.executedInstruction = executedInstructions;
+            return (executedInstructions == dataTask.GetTaskInstructionsValue());
         }
 
-        public void SetId(int id)
+        public void SetExecutedInstructions( int executedInstructions )
         {
-            this.id = id;
+            this.executedInstructions = executedInstructions;
+        }
+
+        public int GetPendingInstructions()
+        {
+            return dataTask.GetTaskInstructionsValue() - executedInstructions;
+        }
+
+        public int GetExecutedInstructions()
+        {
+            return executedInstructions;
         }
 
         public void Show()
         {
             Console.WriteLine("id {0}", GetId());
-            Console.WriteLine("Priority {0}", dataTask.GetPriorityTask());
-            Console.WriteLine("Instructions {0}", dataTask.GetInstructionsTask());
-            Console.WriteLine("Executed Instructions {0}", executedInstruction);
+            Console.WriteLine("Priority {0}", dataTask.GetTaskPriorityValue());
+            Console.WriteLine("Instructions {0}", dataTask.GetTaskInstructionsValue());
+            Console.WriteLine("Executed Instructions {0}", executedInstructions);
             Console.WriteLine("--------------------------");
+            Console.WriteLine("");
         }
+
+        
     }
 }
