@@ -25,7 +25,7 @@ namespace TASK_PROCESSING_SIMULATOR
                     return new RoundRobinPlannerFactory().Create();
 
                 case "Round Robin - Priority Based":
-                    return new RoundRobinPriorityBasedFactory().Create();
+                    return new PriorityBasedRoundRobinFactory().Create();
 
                 default:
                     return new FIFOPlannerFactory().Create();
