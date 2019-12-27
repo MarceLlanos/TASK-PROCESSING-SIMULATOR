@@ -12,7 +12,7 @@ namespace TASK_PROCESSING_SIMULATOR
         {
             bool notEsc = true;
 
-            IQueueTaskFactory queueTaskFactory = new QueueTaskFactory();
+            ITaskQueueFactory queueTaskFactory = new QueueTaskFactory();
             IDirectorTasksFactory directorTaskFactory = new DirectorTasksFactory();
             ITaskFactory task = new TaskFactory(new GeneratorId());
             
@@ -27,9 +27,9 @@ namespace TASK_PROCESSING_SIMULATOR
             Console.WriteLine("What is the value for N:");
             string valueN = Console.ReadLine();
 
-            IDataQueue dataQueue = new DataQueue(int.Parse(valueN));
+            IProcessorData dataQueue = new ProcessorData(int.Parse(valueN));
 
-            var queueTask = queueTaskFactory.CreateQueueTaskFatory(int.Parse(valueN));
+            var queueTask = queueTaskFactory.CreateTaskQueueFatory(int.Parse(valueN));
 
             var directorTask  = directorTaskFactory.CreateDirectorTasks(planner);
 
@@ -78,7 +78,7 @@ namespace TASK_PROCESSING_SIMULATOR
                     Console.WriteLine("");
 
                     dataQueue.SetNumberOfExecutions(int.Parse(execute));
-                    directorTask.DirectTasks(dataQueue, queueTask);
+                    directorTask.DigestProcess(dataQueue, queueTask);
 
                     notEsc = true;
 

@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class QueueTask : IQueueTask
+    class TaskQueue : ITaskQueue
     {
         List<ITask> tasks;
-        int nValue;
+        int numberN;
 
-        public QueueTask(int nValue)
+        public TaskQueue( int numberN )
         {
-            this.nValue = nValue;
+            this.numberN = numberN;
             tasks = new List<ITask>();
         }
 
-        public bool AddTask(ITask task)
+        public bool AddTask( ITask task )
         {
-            var nValue = task.GetDataTask().GetTaskPriorityValue();
-            var taskInstructionsValue = task.GetDataTask().GetTaskInstructionsValue();
+            var numberN = task.GetTaskData().GetTaskPriorityNumber();
+            var taskInstructionsValue = task.GetTaskData().GetTaskInstructionsValue();
 
-            if (nValue > 0 && taskInstructionsValue > 0)
+            if (numberN > 0 && taskInstructionsValue > 0)
             {
                 DeleteTask(task);
                 tasks.Add(task);
@@ -33,7 +33,7 @@ namespace TASK_PROCESSING_SIMULATOR
             return false;
         }
 
-        public void DeleteTask(ITask task)
+        public void DeleteTask( ITask task )
         {
             tasks.Remove(task);
         }
@@ -47,7 +47,7 @@ namespace TASK_PROCESSING_SIMULATOR
         {
             Console.WriteLine("");
             Console.WriteLine("-----------------------------------------");
-            Console.WriteLine("N Value: {0}", nValue);
+            Console.WriteLine("N Value: {0}", numberN);
 
             foreach (var item in tasks)
             {

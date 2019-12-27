@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class DataQueue : IDataQueue
+    class ProcessorData : IProcessorData
     {
         int numberN;
         int numberExecutions;
 
-        public DataQueue(int numberN)
+        public ProcessorData(int numberN)
         {
             this.numberN = numberN;
             numberExecutions = 0;

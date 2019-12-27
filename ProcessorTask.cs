@@ -8,16 +8,16 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class ProcessorTask : IProcessorTask
     {
-        public ITask ProcessTask(ITask task)
+        public ITask ProcessTask( ITask task )
         {
-            var numberN = task.GetDataQueueTask().GetNumberN();
-            var numberExecutions = task.GetDataQueueTask().GetExecuteInstructionsNumber();
+            var numberN = task.GetProcessorData().GetNumberN();
+            var numberOfExecutions = task.GetProcessorData().GetExecuteInstructionsNumber();
             var pendingInstructions = task.GetPendingInstructions();
 
-            var mineValueFound = new Minimum().GetMinimum(numberN, numberExecutions, pendingInstructions);
+            var mineValueFound = new Minimum().GetMinimum( numberN, numberOfExecutions, pendingInstructions );
 
-            task.ExecuteTask(mineValueFound);
-            task.GetDataQueueTask().SetNumberOfExecutions(numberExecutions - mineValueFound);
+            task.ExecuteTask( mineValueFound );
+            task.GetProcessorData().SetNumberOfExecutions( numberOfExecutions - mineValueFound );
 
             return task;
         }

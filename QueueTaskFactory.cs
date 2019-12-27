@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class QueueTaskFactory : IQueueTaskFactory
+    class QueueTaskFactory : ITaskQueueFactory
     {
-        public IQueueTask CreateQueueTaskFatory(int nValue)
+        public ITaskQueue CreateTaskQueueFatory(int numberN)
         {
-            return new QueueTask(nValue);
+            return new TaskQueue(numberN);
         }
     }
 }

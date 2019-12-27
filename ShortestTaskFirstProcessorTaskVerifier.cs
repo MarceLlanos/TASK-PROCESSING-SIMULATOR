@@ -8,10 +8,10 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class ShortestTaskFirstProcessorTaskVerifier : IProcessorTasksVerifier
     {
-        public bool IsBestTaskToProcess(ITask firstTask, ITask secondTask)
+        public bool IsBestTaskToProcess( ITask firstTask, ITask secondTask )
         {
-            var firstTaskInstructionsValue = firstTask.GetDataTask().GetTaskInstructionsValue();
-            var secondTaskInstructionsValue = secondTask.GetDataTask().GetTaskInstructionsValue();
+            var firstTaskInstructionsValue = firstTask.GetTaskData().GetTaskInstructionsValue();
+            var secondTaskInstructionsValue = secondTask.GetTaskData().GetTaskInstructionsValue();
 
             return ( firstTaskInstructionsValue < secondTaskInstructionsValue );
         }

@@ -8,6 +8,6 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     interface IMinimum
     {
-        int GetMinimum( int nValue, int executeValue, int pendingInstructions);
+        int GetMinimum( int numberN, int numberOfExecutions, int pendingInstructions);
     }
 }

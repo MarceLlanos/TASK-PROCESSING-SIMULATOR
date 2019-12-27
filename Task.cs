@@ -8,48 +8,48 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class Task : ITask
     {
-        IDataTask dataTask;
-        IDataQueue dataQueue;
-        int executedInstructions;
+        ITaskData taskData;
+        IProcessorData processorData;
+        int numberOfInstructionsExecuted;
         int id;
 
-        public Task(int id, IDataTask dataTask, IDataQueue dataQueue)
+        public Task( int id, ITaskData taskData, IProcessorData processorData )
         {
             this.id = id;
-            this.dataTask = dataTask;
-            this.dataQueue = dataQueue;
-            executedInstructions = 0;
+            this.taskData = taskData;
+            this.processorData = processorData;
+            numberOfInstructionsExecuted = 0;
             
         }
 
         public void ExecuteTask( int instructions )
         {
-            executedInstructions += instructions;
+            numberOfInstructionsExecuted += instructions;
         }
 
         public void ExecuteTaskLimitedByN( int instructions )
         {
-            var nValue = dataQueue.GetNumberN();
+            var nValue = processorData.GetNumberN();
 
             if (instructions >=  nValue)
             {
-                executedInstructions += nValue;
+                numberOfInstructionsExecuted += nValue;
             }
 
             if(instructions < nValue)
             {
-                executedInstructions += instructions;   
+                numberOfInstructionsExecuted += instructions;   
             }
         }
 
-        public IDataQueue GetDataQueueTask()
+        public IProcessorData GetProcessorData()
         {
-            return dataQueue;
+            return processorData;
         }
 
-        public IDataTask GetDataTask()
+        public ITaskData GetTaskData()
         {
-            return dataTask;
+            return taskData;
         }
 
         public int GetId()
@@ -59,30 +59,30 @@ namespace TASK_PROCESSING_SIMULATOR
 
         public bool IsTaskCompletedExecuted()
         {
-            return (executedInstructions == dataTask.GetTaskInstructionsValue());
+            return (numberOfInstructionsExecuted == taskData.GetTaskInstructionsValue());
         }
 
         public void SetExecutedInstructions( int executedInstructions )
         {
-            this.executedInstructions = executedInstructions;
+            this.numberOfInstructionsExecuted = executedInstructions;
         }
 
         public int GetPendingInstructions()
         {
-            return dataTask.GetTaskInstructionsValue() - executedInstructions;
+            return taskData.GetTaskInstructionsValue() - numberOfInstructionsExecuted;
         }
 
         public int GetExecutedInstructions()
         {
-            return executedInstructions;
+            return numberOfInstructionsExecuted;
         }
 
         public void Show()
         {
             Console.WriteLine("id {0}", GetId());
-            Console.WriteLine("Priority {0}", dataTask.GetTaskPriorityValue());
-            Console.WriteLine("Instructions {0}", dataTask.GetTaskInstructionsValue());
-            Console.WriteLine("Executed Instructions {0}", executedInstructions);
+            Console.WriteLine("Priority {0}", taskData.GetTaskPriorityNumber());
+            Console.WriteLine("Instructions {0}", taskData.GetTaskInstructionsValue());
+            Console.WriteLine("Executed Instructions {0}", numberOfInstructionsExecuted);
             Console.WriteLine("--------------------------");
             Console.WriteLine("");
         }

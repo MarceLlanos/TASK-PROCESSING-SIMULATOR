@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    public interface IDataQueue
+    public interface IProcessDirector
     {
-        int GetNumberN();
-        int GetExecuteInstructionsNumber();
-        void SetNumberOfExecutions(int executeInstructionsValue);
-
+        ITaskQueue DigestProcess(IProcessorData processorData, ITaskQueue taskQueue);
     }
 }

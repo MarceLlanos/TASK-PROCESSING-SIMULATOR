@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    public interface IDirectorTask
+    public interface ITaskQueue
     {
-        IQueueTask DirectTasks(IDataQueue dataQueue, IQueueTask queueTask);
+        bool AddTask(ITask task);
+        void ShowQueue();
+        List<ITask> GetTasks();
+        void DeleteTask(ITask task);
+
     }
 }

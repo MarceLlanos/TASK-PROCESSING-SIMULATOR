@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class DirectorTask : IDirectorTask
+    class DirectorTask : IProcessDirector
     {
         IPlannerTasks plannerTask;
         IProcessorTask processorTask;
@@ -18,7 +18,7 @@ namespace TASK_PROCESSING_SIMULATOR
             
         }
         
-        public IQueueTask DirectTasks(IDataQueue dataQueue, IQueueTask queueTask)
+        public ITaskQueue DigestProcess(IProcessorData dataQueue, ITaskQueue queueTask)
         {
             while (dataQueue.GetExecuteInstructionsNumber() > 0)
             {

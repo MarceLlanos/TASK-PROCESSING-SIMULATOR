@@ -2,13 +2,13 @@
 {
     public interface ITask
     {
-        IDataTask GetDataTask();
+        ITaskData GetTaskData();
         int GetPendingInstructions();
         int GetId();
         void SetExecutedInstructions(int executedInstructions);
         void Show();
         void ExecuteTaskLimitedByN(int instructionsToExecute);
-        IDataQueue GetDataQueueTask();
+        IProcessorData GetProcessorData();
         void ExecuteTask(int minInstructionsToExecute);
         bool IsTaskCompletedExecuted();
         int GetExecutedInstructions();

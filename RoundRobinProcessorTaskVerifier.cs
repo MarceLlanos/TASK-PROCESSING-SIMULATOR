@@ -8,7 +8,7 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class RoundRobinProcessorTaskVerifier : IProcessorTasksVerifier
     {
-        public bool IsBestTaskToProcess(ITask firstTask, ITask secondTask)
+        public bool IsBestTaskToProcess( ITask firstTask, ITask secondTask )
         {
             var firstTaskExecutedInstructions = firstTask.GetExecutedInstructions();
             var secondTaskExecutedInstructions = secondTask.GetExecutedInstructions();

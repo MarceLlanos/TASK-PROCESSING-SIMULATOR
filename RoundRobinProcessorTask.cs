@@ -8,27 +8,26 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class RoundRobinProcessorTask : IProcessorTask
     {
-        public ITask ProcessTask(ITask task)
+        public ITask ProcessTask( ITask task )
         {
-            var numberN = task.GetDataQueueTask().GetNumberN();
-            var numberExecutions = task.GetDataQueueTask().GetExecuteInstructionsNumber();
+            var numberN = task.GetProcessorData().GetNumberN();
+            var numberExecutions = task.GetProcessorData().GetExecuteInstructionsNumber();
             var pendingInstructions = task.GetPendingInstructions();
             var instructionsExecuted = task.GetExecutedInstructions();
 
-
-            var mineNumberFound = new Minimum().GetMinimum(numberN, numberExecutions, pendingInstructions);
+            var mineNumberFound = new Minimum().GetMinimum( numberN, numberExecutions, pendingInstructions );
             var numberToExecute = mineNumberFound - instructionsExecuted;
 
-            if ( instructionsExecuted > 0 && instructionsExecuted < numberN)
+            if ( instructionsExecuted > 0 && instructionsExecuted < numberN )
             {
                 task.ExecuteTaskLimitedByN(numberToExecute);
-                task.GetDataQueueTask().SetNumberOfExecutions(numberExecutions - numberToExecute);
+                task.GetProcessorData().SetNumberOfExecutions( numberExecutions - numberToExecute );
 
             }
             else
             {
                 task.ExecuteTaskLimitedByN(mineNumberFound);
-                task.GetDataQueueTask().SetNumberOfExecutions(numberExecutions - mineNumberFound);
+                task.GetProcessorData().SetNumberOfExecutions( numberExecutions - mineNumberFound );
 
             }
 

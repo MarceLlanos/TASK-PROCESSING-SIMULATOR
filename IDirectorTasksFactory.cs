@@ -8,6 +8,6 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     public interface IDirectorTasksFactory
     {
-        IDirectorTask CreateDirectorTasks( string algorithm );
+        IProcessDirector CreateDirectorTasks( string algorithm );
     }
 }

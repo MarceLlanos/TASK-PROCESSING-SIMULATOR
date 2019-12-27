@@ -15,9 +15,9 @@ namespace TASK_PROCESSING_SIMULATOR
             this.generateId = generateId;
         }
 
-        public ITask CreateTask(int priority, int instructions, IDataQueue dataQueue)
+        public ITask CreateTask(int priority, int instructions, IProcessorData dataQueue)
         {
-            var dataTask = new DataTask(priority, instructions);
+            var dataTask = new TaskData(priority, instructions);
 
             return new Task(generateId.GenerateId(), dataTask, dataQueue);
         }

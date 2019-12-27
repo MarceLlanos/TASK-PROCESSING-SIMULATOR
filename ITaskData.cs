@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    public interface IDataTask
+    public interface ITaskData
     {
-        int GetTaskPriorityValue();
+        int GetTaskPriorityNumber();
         int GetTaskInstructionsValue();
     }
 }

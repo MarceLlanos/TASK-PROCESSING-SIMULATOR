@@ -8,7 +8,7 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class DirectorTasksFactory : IDirectorTasksFactory
     {
-        public IDirectorTask CreateDirectorTasks(string algorithm)
+        public IProcessDirector CreateDirectorTasks(string algorithm)
         {
             var optionPlanner = new OptionMenuFactory().CreateOption(algorithm);
             var processorTask = new ProcessorTask();
