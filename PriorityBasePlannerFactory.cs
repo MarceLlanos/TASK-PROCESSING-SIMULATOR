@@ -10,7 +10,7 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public IPlanner Create()
         {
-            return new PlannerTasks(new PriorityBasedProcessorTaskVerifier());
+            return new Planner(new PriorityBasedProcessorTaskVerifier());
         }
     }
 }

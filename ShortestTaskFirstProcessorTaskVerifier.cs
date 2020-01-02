@@ -10,8 +10,8 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public bool IsBestTaskToProcess( ITask firstTask, ITask secondTask )
         {
-            var firstInstructionsNumber= firstTask.GetTaskData().GetTaskInstructionsValue();
-            var secondInstructionsNumber = secondTask.GetTaskData().GetTaskInstructionsValue();
+            var firstInstructionsNumber= firstTask.GetTaskData().GetInstructionsNumber();
+            var secondInstructionsNumber = secondTask.GetTaskData().GetInstructionsNumber();
 
             return (firstInstructionsNumber < secondInstructionsNumber );
         }

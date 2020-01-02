@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class Director : IDirector
+    class Orchestrator: IOrchestrator
     {
         IPlanner plannerTask;
         IProcessorTask processorTask;
 
-        public Director(IPlanner plannerTask, IProcessorTask processorTask)
+        public Orchestrator(IPlanner plannerTask, IProcessorTask processorTask)
         {
             this.plannerTask = plannerTask;
             this.processorTask = processorTask;
             
         }
         
-        public ITaskQueue DigestProcess(IProcessorData dataQueue, ITaskQueue queueTask)
+        public ITaskQueue DirectOrchestra(IOrchestraInformation orchestraInformation, ITaskQueue queueTask)
         {
-            while (dataQueue.GetExecuteInstructionsNumber() > 0)
+            while (orchestraInformation.GetExecuteInstructionsNumber() > 0)
             {
-                var task = plannerTask.ExetendTask(queueTask.GetTasks());
+                var task = plannerTask.ReturnAvailableTask(queueTask.GetTasks());
                 var taskResult = processorTask.ProcessTask(task);
 
-                if (!taskResult.IsTaskCompletedExecuted())
+                if (!taskResult.IsTaskCompleteExecuted())
                 {
                     queueTask.AddTask(taskResult);
                 }

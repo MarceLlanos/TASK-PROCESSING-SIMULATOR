@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class Minimum : IMinimum
+    class MinimumValue : IMinimumValue
     {
-        public int GetMinimum( int numberN, int numberExecutions, int pendingInstructions )
+        public int GetMineNumber( int numberN, int numberExecutions, int pendingInstructions )
         {
             int resultMinimumValue = Math.Min( numberN, numberExecutions );
-            resultMinimumValue = Math.Min( resultMinimumValue, pendingInstructions );
-
-            return resultMinimumValue;
+            return Math.Min( resultMinimumValue, pendingInstructions );
         }
     }
 }

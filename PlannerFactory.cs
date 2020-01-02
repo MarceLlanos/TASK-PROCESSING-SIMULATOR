@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class PlannerFactory : IOptionsFactory<IPlanner>
+    class PlannerFactory : IMenuFactory<IPlanner>
     {
-        public IPlanner CreateOption(string planneSort)
+        public IPlanner CreateMenu(string planneSort)
         {
             switch (planneSort)
             {

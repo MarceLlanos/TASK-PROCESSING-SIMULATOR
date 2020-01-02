@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class DirectorTasksFactory : IDirectorFactory
+    class OrchestratorFactory : IOrchestratorFactory
     {
-        public IDirector CreateDirectorTasks(string algorithm)
+        public IOrchestrator CreateOrchestra(string algorithm)
         {
-            var optionPlanner = new OptionMenuFactory().CreateOption(algorithm);
+            var optionPlanner = new AlgorithmMenuFactory().CreateMenu(algorithm);
             var processorTask = new ProcessorTask();
             var roundRobinProcessorTask = new RoundRobinProcessorTask();
 
             if (algorithm == "4")
             {
-                return new Director(optionPlanner, roundRobinProcessorTask);
+                return new Orchestrator(optionPlanner, roundRobinProcessorTask);
             }
 
-            return new Director(optionPlanner, processorTask);
+            return new Orchestrator(optionPlanner, processorTask);
         }
     }
 }

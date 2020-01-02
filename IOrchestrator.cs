@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    public interface ITaskData
+    public interface IOrchestrator
     {
-        int GetTaskPriorityNumber();
-        int GetTaskInstructionsValue();
+        ITaskQueue DirectOrchestra(IOrchestraInformation orchestraInformation, ITaskQueue taskQueue);
     }
 }

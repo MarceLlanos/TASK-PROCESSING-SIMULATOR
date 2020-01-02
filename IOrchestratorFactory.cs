@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IMinimum
+    public interface IOrchestratorFactory
     {
-        int GetMinimum( int numberN, int numberOfExecutions, int pendingInstructions);
+        IOrchestrator CreateOrchestra( string algorithm );
     }
 }

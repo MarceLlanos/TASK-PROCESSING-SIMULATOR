@@ -10,8 +10,8 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public bool IsBestTaskToProcess(ITask firstTask, ITask secondTask)
         {
-            var firstTaskPriorityValue = firstTask.GetTaskData().GetTaskPriorityNumber();
-            var secondTaskPriorityValue = secondTask.GetTaskData().GetTaskPriorityNumber();
+            var firstTaskPriorityValue = firstTask.GetTaskData().GetPriorityNumber();
+            var secondTaskPriorityValue = secondTask.GetTaskData().GetPriorityNumber();
 
             return ( firstTaskPriorityValue < secondTaskPriorityValue);
         }

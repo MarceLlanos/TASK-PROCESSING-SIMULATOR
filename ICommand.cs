@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    interface IOptionsFactory<T>
+    public interface ICommand
     {
-        T CreateOption(string option);
+        bool Execute(string option);
     }
 }

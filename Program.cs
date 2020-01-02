@@ -12,38 +12,50 @@ namespace TASK_PROCESSING_SIMULATOR
         {
             bool notEsc = true;
 
-            ITaskQueueFactory queueTaskFactory = new QueueTaskFactory();
-            IDirectorFactory directorTaskFactory = new DirectorTasksFactory();
-            ITaskFactory task = new TaskFactory(new GeneratorId());
-            IDisplayer display = new Displayer();
+            var queueTaskFactory = new QueueTaskFactory();
+            var orchestratorFactory = new OrchestratorFactory();
+            var task = new TaskFactory(new GeneratorId());
+            var displayAlgorithmsMenu = new DisplayerAlgorithmMenu();
+            var displayInformationTask = new InformationTaskDisplayer();
+            var displayMenuOption = new MenuOptionsDisplay();
+            var taskInformation = new TaskInformation(0, 0);
+            var algorithmMenu = displayAlgorithmsMenu.MenuDisplay();
+            var numberN = displayInformationTask.NumberNDisplay();
 
-            var algorithmMenu = display.AlgorithmMenuDisplay();
-            var numberN = display.NumberNDisplay();
-
-            IProcessorData dataQueue = new ProcessorData(int.Parse(numberN));
+            var orchestraInformation = new OrchestraInformation(int.Parse(numberN));
             var queueTask = queueTaskFactory.CreateQueueTaskFatory(int.Parse(numberN));
-            var directorTask  = directorTaskFactory.CreateDirectorTasks(algorithmMenu);
+            var directorTask  = orchestratorFactory.CreateOrchestra(algorithmMenu);
+            
+            var executeWrittenAction = new ExecuteWrittenAction(orchestraInformation, queueTask);
+            var showWrittenAction = new ShowWrittenAction(queueTask);
+            var escWrittenAction = new EscWrittenAction();
+
+            var executeWrittenCommand = new OptionWrittenCommand(executeWrittenAction);
+            var showWrittenCommand = new OptionWrittenCommand(showWrittenAction);
+            var escWrittenCommand = new OptionWrittenCommand(escWrittenAction);
+
+            var controlOptions = new ControlOptions();
 
             while (notEsc)
             {
-                var option = display.SettingMenuDisplay();
+                string option = displayMenuOption.MenuDisplay();
 
                 if (option == "ADD")
                 {
-                    var priorityNumber = display.PriorityNumber();
-                    var instructionsNumber = display.InstructionsNumber();
+                    var priorityNumber = displayInformationTask.PriorityNumber();
+                    var instructionsNumber = displayInformationTask.InstructionsNumber();
 
-                    task.CreateTask(int.Parse(priorityNumber), int.Parse(instructionsNumber), dataQueue);
+                    queueTask.AddTask(task.CreateTask(int.Parse(priorityNumber), int.Parse(instructionsNumber), orchestraInformation));
 
                     notEsc = true;
                 }
 
                 if (option == "EXECUTE")
                 {
-                    var executionsNumber = display.ExecuteNumber();
+                    var executionsNumber = displayInformationTask.ExecuteNumber();
 
-                    dataQueue.SetNumberOfExecutions(int.Parse(executionsNumber));
-                    directorTask.DigestProcess(dataQueue, queueTask);
+                    orchestraInformation.SetNumberOfExecutions(int.Parse(executionsNumber));
+                    directorTask.DirectOrchestra(orchestraInformation, queueTask);
 
                     notEsc = true;
                 }
@@ -61,7 +73,6 @@ namespace TASK_PROCESSING_SIMULATOR
                     notEsc = false;
                 }
             }
-            
 
             Console.ReadKey();
 

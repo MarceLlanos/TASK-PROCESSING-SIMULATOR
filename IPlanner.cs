@@ -9,6 +9,6 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     public interface IPlanner
     {
-        ITask ExetendTask(List<ITask> tasks);
+        ITask ReturnAvailableTask(List<ITask> tasks);
     }
 } 

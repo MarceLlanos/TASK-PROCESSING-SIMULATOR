@@ -8,46 +8,46 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     class Task : ITask
     {
-        ITaskData taskData;
-        IProcessorData processorData;
+        ITaskInformation taskData;
+        IOrchestraInformation orchestraInformation;
         int numberOfInstructionsExecuted;
         int id;
 
-        public Task( int id, ITaskData taskData, IProcessorData processorData )
+        public Task(int id, ITaskInformation taskData, IOrchestraInformation orchestraInformation)
         {
             this.id = id;
             this.taskData = taskData;
-            this.processorData = processorData;
+            this.orchestraInformation = orchestraInformation;
             numberOfInstructionsExecuted = 0;
-            
+
         }
 
-        public void ExecuteTask( int instructions )
+        public void ExecuteTask(int instructions)
         {
             numberOfInstructionsExecuted += instructions;
         }
 
-        public void ExecuteTaskLimitedByN( int instructions )
+        public void ExecuteTaskLimitedByN(int instructions)
         {
-            var nValue = processorData.GetNumberN();
+            var nValue = orchestraInformation.GetNumberN();
 
-            if (instructions >=  nValue)
+            if (instructions >= nValue)
             {
                 numberOfInstructionsExecuted += nValue;
             }
 
-            if(instructions < nValue)
+            if (instructions < nValue)
             {
-                numberOfInstructionsExecuted += instructions;   
+                numberOfInstructionsExecuted += instructions;
             }
         }
 
-        public IProcessorData GetProcessorData()
+        public IOrchestraInformation GetOrchestraInformation()
         {
-            return processorData;
+            return orchestraInformation;
         }
 
-        public ITaskData GetTaskData()
+        public ITaskInformation GetTaskData()
         {
             return taskData;
         }
@@ -57,19 +57,19 @@ namespace TASK_PROCESSING_SIMULATOR
             return id;
         }
 
-        public bool IsTaskCompletedExecuted()
+        public bool IsTaskCompleteExecuted()
         {
-            return (numberOfInstructionsExecuted == taskData.GetTaskInstructionsValue());
+            return (numberOfInstructionsExecuted == taskData.GetInstructionsNumber());
         }
 
-        public void SetExecutedInstructions( int executedInstructions )
+        public void SetExecutedInstructions(int executedInstructions)
         {
             this.numberOfInstructionsExecuted = executedInstructions;
         }
 
         public int GetPendingInstructions()
         {
-            return taskData.GetTaskInstructionsValue() - numberOfInstructionsExecuted;
+            return taskData.GetInstructionsNumber() - numberOfInstructionsExecuted;
         }
 
         public int GetExecutedInstructions()
@@ -80,13 +80,12 @@ namespace TASK_PROCESSING_SIMULATOR
         public void Show()
         {
             Console.WriteLine("id {0}", GetId());
-            Console.WriteLine("Priority {0}", taskData.GetTaskPriorityNumber());
-            Console.WriteLine("Instructions {0}", taskData.GetTaskInstructionsValue());
+            Console.WriteLine("Priority {0}", taskData.GetPriorityNumber());
+            Console.WriteLine("Instructions {0}", taskData.GetInstructionsNumber());
             Console.WriteLine("Executed Instructions {0}", numberOfInstructionsExecuted);
             Console.WriteLine("--------------------------");
             Console.WriteLine("");
         }
 
-        
     }
 }

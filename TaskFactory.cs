@@ -15,11 +15,12 @@ namespace TASK_PROCESSING_SIMULATOR
             this.generateId = generateId;
         }
 
-        public ITask CreateTask(int priorityNumber, int instructionsNumber, IProcessorData processorData)
+        public ITask CreateTask(int priorityNumber, int instructionsNumber, IOrchestraInformation orchestraInformation)
         {
-            var dataTask = new TaskData(priorityNumber, instructionsNumber);
+            var dataTask = new TaskInformation(priorityNumber, instructionsNumber);
 
-            return new Task(generateId.GenerateId(), dataTask, processorData);
+            return new Task(generateId.GenerateId(), dataTask, orchestraInformation);
         }
+
     }
 }

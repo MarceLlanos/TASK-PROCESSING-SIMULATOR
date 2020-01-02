@@ -10,24 +10,24 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public ITask ProcessTask( ITask task )
         {
-            var numberN = task.GetProcessorData().GetNumberN();
-            var numberExecutions = task.GetProcessorData().GetExecuteInstructionsNumber();
+            var numberN = task.GetTaskData().GetNumberN();
+            var numberExecutions = task.GetTaskData().GetExecuteInstructionsNumber();
             var pendingInstructions = task.GetPendingInstructions();
             var instructionsExecuted = task.GetExecutedInstructions();
 
-            var mineNumberFound = new Minimum().GetMinimum( numberN, numberExecutions, pendingInstructions );
+            var mineNumberFound = new MinimumValue().GetMineNumber( numberN, numberExecutions, pendingInstructions );
             var numberToExecute = mineNumberFound - instructionsExecuted;
 
             if ( instructionsExecuted > 0 && instructionsExecuted < numberN )
             {
                 task.ExecuteTaskLimitedByN(numberToExecute);
-                task.GetProcessorData().SetNumberOfExecutions( numberExecutions - numberToExecute );
+                task.GetTaskData().SetNumberOfExecutions( numberExecutions - numberToExecute );
 
             }
             else
             {
                 task.ExecuteTaskLimitedByN(mineNumberFound);
-                task.GetProcessorData().SetNumberOfExecutions( numberExecutions - mineNumberFound );
+                task.GetTaskData().SetNumberOfExecutions( numberExecutions - mineNumberFound );
 
             }
 

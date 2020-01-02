@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    public interface IDirector
+    interface IMenuFactory<T>
     {
-        ITaskQueue DigestProcess(IProcessorData processorData, ITaskQueue taskQueue);
+        T CreateMenu(string option);
     }
 }

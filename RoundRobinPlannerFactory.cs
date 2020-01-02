@@ -10,7 +10,7 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public IPlanner Create()
         {
-            return new PlannerTasks(new RoundRobinProcessorTaskVerifier());
+            return new Planner(new RoundRobinProcessorTaskVerifier());
         }
     }
 }

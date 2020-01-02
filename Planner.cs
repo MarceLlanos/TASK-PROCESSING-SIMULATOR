@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class PlannerTasks : IPlanner
+    class Planner : IPlanner
     {
         IProcessorTasksVerifier verifyTaskToProcess;
 
-        public PlannerTasks(IProcessorTasksVerifier verifyTaskToProcess)
+        public Planner(IProcessorTasksVerifier verifyTaskToProcess)
         {
             this.verifyTaskToProcess = verifyTaskToProcess;
         }
 
-        public ITask ExetendTask(List<ITask> tasks)
+        public ITask ReturnAvailableTask(List<ITask> tasks)
         {
             if (tasks == null || tasks.Count == 0)
             {

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class OptionsMenu : IOptionsFactory<string>
+    class NumericMenu : IMenuFactory<string>
     {
-        public string CreateOption(string option)
+        public string CreateMenu(string option)
         {
             switch (option)
             {

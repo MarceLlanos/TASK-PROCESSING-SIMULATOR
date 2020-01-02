@@ -8,11 +8,11 @@ namespace TASK_PROCESSING_SIMULATOR
 {
     public interface IDisplayer
     {
-        string  AlgorithmMenuDisplay();
-        string NumberNDisplay();
-        string SettingMenuDisplay();
+        string  MenuDisplay();
+        /*string NumberNDisplay();
+        string ControlMenu();
         string PriorityNumber();
         string InstructionsNumber();
-        string ExecuteNumber();
+        string ExecuteNumber();*/
     }
 }

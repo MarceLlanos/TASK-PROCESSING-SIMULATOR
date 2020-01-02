@@ -2,15 +2,15 @@
 {
     public interface ITask
     {
-        ITaskData GetTaskData();
+        ITaskInformation GetTaskData();
         int GetPendingInstructions();
         int GetId();
         void SetExecutedInstructions(int executedInstructions);
         void Show();
         void ExecuteTaskLimitedByN(int instructionsToExecute);
-        IProcessorData GetProcessorData();
+        IOrchestraInformation GetOrchestraInformation();
         void ExecuteTask(int minInstructionsToExecute);
-        bool IsTaskCompletedExecuted();
+        bool IsTaskCompleteExecuted();
         int GetExecutedInstructions();
     }
 }

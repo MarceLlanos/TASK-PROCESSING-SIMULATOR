@@ -19,8 +19,8 @@ namespace TASK_PROCESSING_SIMULATOR
 
         public bool AddTask( ITask task )
         {
-            var numberN = task.GetTaskData().GetTaskPriorityNumber();
-            var taskInstructionsValue = task.GetTaskData().GetTaskInstructionsValue();
+            var numberN = task.GetTaskData().GetPriorityNumber();
+            var taskInstructionsValue = task.GetTaskData().GetInstructionsNumber();
 
             if (numberN > 0 && taskInstructionsValue > 0)
             {

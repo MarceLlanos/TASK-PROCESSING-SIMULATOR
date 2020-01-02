@@ -1,8 +1,8 @@
 ﻿namespace TASK_PROCESSING_SIMULATOR
 {
-    internal interface ITaskFactory
+    public interface ITaskFactory
     {
-        ITask CreateTask(int priority, int instructions, IProcessorData dataQueue);
+        ITask CreateTask(int priority, int instructions, IOrchestraInformation orchestraInformation);
 
     }
 }

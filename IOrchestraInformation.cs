@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    public interface IProcessorData
+    public interface IOrchestraInformation
     {
         int GetNumberN();
         int GetExecuteInstructionsNumber();
         void SetNumberOfExecutions(int executeInstructionsValue);
-
     }
 }

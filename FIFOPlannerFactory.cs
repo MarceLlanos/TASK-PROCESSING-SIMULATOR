@@ -10,7 +10,7 @@ namespace TASK_PROCESSING_SIMULATOR
     {
         public IPlanner Create()
         {
-            return new PlannerTasks(new FIFOProcessorTaskVerifier());
+            return new Planner(new FIFOProcessorTaskVerifier());
         }
 
     }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TASK_PROCESSING_SIMULATOR
 {
-    class ProcessorData : IProcessorData
+    class OrchestraInformation : IOrchestraInformation
     {
         int numberN;
         int numberExecutions;
 
-        public ProcessorData(int numberN)
+        public OrchestraInformation(int numberN)
         {
             this.numberN = numberN;
             numberExecutions = 0;
